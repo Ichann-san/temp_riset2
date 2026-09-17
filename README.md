@@ -33,3 +33,9 @@ npm run build
 ```
 
 This is a UI-only prototype. It does not require the Flask backend, a database, authentication, or external services.
+
+## Deploy to Vercel
+
+Import this repository into Vercel and keep the project Root Directory at the repository root. The committed `vercel.json` installs and builds the application from `frontend/` and deploys only the Next.js output.
+
+The Flask folder is source material for future development and is not deployed with this presentation prototype.
