@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Node and Next.js
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
+# Environment and local files
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Runtime data
+backend/instance/
+backend/uploads/
+*.sqlite
+*.sqlite3

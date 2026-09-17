@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4f7f8;
+  --foreground: #102a37;
+  --muted: #5d707a;
+  --line: #dce5e8;
+  --accent: #087f73;
+  --accent-dark: #075f58;
+  --accent-soft: #e3f4f1;
+  --surface: #ffffff;
+  --warning: #9a5b0a;
+  --warning-soft: #fff4d8;
+  --danger: #a13838;
+  --danger-soft: #fdebec;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--background);
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+}
+
+::selection {
+  background: #b8e4de;
+  color: #083d39;
+}
+
+:focus-visible {
+  outline: 3px solid #2aa99b;
+  outline-offset: 3px;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eef3f4;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid #eef3f4;
+  border-radius: 999px;
+  background: #9bb0b8;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.surface {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.soft-surface {
+  border-radius: 14px;
+  background: #edf3f4;
+}
+
+.prototype-button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--accent);
+  padding: 0.7rem 1rem;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 650;
+  transition: background 160ms ease;
+}
+
+.prototype-button:hover {
+  background: var(--accent-dark);
+}
+
+.prototype-button.secondary {
+  border: 1px solid #b9c9ce;
+  background: white;
+  color: var(--foreground);
+}
+
+.prototype-button.secondary:hover {
+  background: #eef4f5;
+}
+
+.field {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #bdcbd0;
+  border-radius: 10px;
+  background: white;
+  padding: 0.7rem 0.85rem;
+  color: var(--foreground);
+}
+
+.field::placeholder {
+  color: #6b7d85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
