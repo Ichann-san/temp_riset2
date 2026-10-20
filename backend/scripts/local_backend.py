@@ -84,7 +84,9 @@ def main(args=None):
             print('Backend lokal siap dijalankan. Hentikan dengan Ctrl+C.', flush=True)
         else:
             command = [sys.executable, '-B', '-m', 'flask', '--app', 'app', *args]
-        os.execv(sys.executable, command)
+        # Keep the launcher attached to the child for its full lifetime.
+        # Replacing this process can return immediately under Git Bash on Windows.
+        return subprocess.run(command, check=False).returncode
     except psycopg.Error:
         print('Koneksi PostgreSQL gagal. Periksa server, DATABASE_URL dan password di konfigurasi lokal.', file=sys.stderr)
         return 1

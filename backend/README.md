@@ -71,7 +71,7 @@ cd C:\Users\maula\Documents\Code\work\riset-2-mcu\backend
 & 'C:\Program Files\Git\bin\bash.exe' ./start.sh
 ```
 
-Gunakan Git Bash, bukan WSL. Dari terminal Git Bash sendiri: `bash ./start.sh`. Launcher memuat konfigurasi, menerapkan migrasi idempotent, lalu menjalankan Waitress pada `http://127.0.0.1:5000`. Hentikan dengan Ctrl+C. PostgreSQL harus sudah berjalan. Startup tidak menghapus data, membuat akun, maupun membuka tanggal layanan otomatis.
+Gunakan Git Bash, bukan WSL. Dari terminal Git Bash sendiri: `bash ./start.sh`. Di PowerShell gunakan `& 'C:\Program Files\Git\bin\bash.exe' ./start.sh`; jangan gunakan `bash .\start.sh` karena Bash mengartikan backslash sebagai escape sehingga mencari `.start.sh`. Launcher memuat konfigurasi, menerapkan migrasi idempotent, lalu menjalankan Waitress pada `http://127.0.0.1:5000`. PowerShell tetap menunggu selama server berjalan. Uji `http://127.0.0.1:5000/api/v1/health` di terminal/browser lain. Hentikan dengan Ctrl+C. PostgreSQL harus sudah berjalan. Startup tidak menghapus data, membuat akun, maupun membuka tanggal layanan otomatis.
 
 Untuk membuka H+1 pada hari berikutnya, cek `start.sh registration-status`, lalu jalankan `start.sh open-registration --date YYYY-MM-DD` melalui Git Bash seperti contoh di atas. Pembukaan tetap keputusan operator.
 
