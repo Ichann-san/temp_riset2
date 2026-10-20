@@ -1,0 +1,58 @@
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px","primaryColor":"#FFFFFF","primaryTextColor":"#172033","lineColor":"#667085"},"flowchart":{"curve":"linear","nodeSpacing":30,"rankSpacing":40,"useMaxWidth":false}}}%%
+flowchart TB
+    PATIENT["Patient / authorized representative"]
+    STAFF["Hospital staff / doctors / management / editor"]
+    PUBLIC["Public HTTPS ingress<br/>CDN for static assets only / rate limiting"]
+    PRIVATE["Private staff ingress<br/>Hospital network or VPN / SSO and MFA"]
+    WEB["Next.js patient portal<br/>Client-rendered authenticated workspace"]
+    INTERNAL["Next.js staff portal<br/>Role-specific worklists and dashboards"]
+    LB["Public API load balancer"]
+    ILB["Internal API load balancer"]
+    API["Flask public API replicas<br/>Patient route allowlist / ownership checks"]
+    IAPI["Flask internal API replicas<br/>Staff route allowlist / role and unit checks"]
+    DOMAIN["Shared modular application code<br/>Identity / catalog / registration / queues<br/>Examinations / billing / documents / reporting"]
+    POOL["Bounded database connection pools<br/>Distinct public, staff and worker credentials"]
+    DB[("Private PostgreSQL<br/>Transactional records / validated JSONB<br/>Sessions / idempotency / audit / outbox")]
+    WORKER["Background worker replicas<br/>Leased outbox jobs / retry / dead-letter review<br/>CSV validation / PDF generation / notification"]
+    OBJECT[("Private object storage<br/>Quarantined CSV / versioned PDF / attachments")]
+    PAY["Payment gateway<br/>Provider and commercial rules TBD"]
+    HOOK["Public payment webhook endpoint<br/>Signature validation / deduplication / reconciliation"]
+    ID["Identity adapter<br/>RR / SIMRS / Dukcapil contract TBD"]
+    WA["WhatsApp provider<br/>Authenticated result-link notification"]
+    NOTIFY["Patient receives notification<br/>Opens authenticated portal"]
+    OPS["Monitoring and restricted audit access<br/>Metrics / alerts / correlation IDs"]
+    BACKUP["Encrypted backups and recovery<br/>PostgreSQL PITR / object versions / restore drills"]
+
+    PATIENT --> PUBLIC --> WEB --> LB --> API
+    STAFF --> PRIVATE --> INTERNAL --> ILB --> IAPI
+    API --> DOMAIN
+    IAPI --> DOMAIN
+    DOMAIN --> POOL --> DB
+    DOMAIN -->|Authorized storage operations| OBJECT
+    DOMAIN -->|Identity verification| ID
+    DOMAIN -->|Create payment request| PAY
+    PAY -->|Signed provider callback| HOOK
+    HOOK -->|Apply verified event transaction| POOL
+    DB -->|Claim committed outbox jobs| WORKER
+    WORKER -->|Job state and delivery outcome| DB
+    WORKER --> OBJECT
+    WORKER --> WA
+    WA --> NOTIFY
+    API -.-> OPS
+    IAPI -.-> OPS
+    WORKER -.-> OPS
+    DB -.-> BACKUP
+    OBJECT -.-> BACKUP
+
+    %% Docker containers; managed horizontal scaling. Compose for development/pilot.
+    %% DOMAIN represents shared code, not another service. HOOK uses the billing module.
+    %% No browser-to-database access. No public staff API routes.
+
+    classDef ui fill:#FFFFFF,stroke:#16801C,color:#172033;
+    classDef app fill:#EAF5EB,stroke:#16801C,color:#172033;
+    classDef data fill:#FFF8DB,stroke:#9A8614,color:#172033;
+    classDef external fill:#F8EEEE,stroke:#8B1C1A,color:#172033;
+    class WEB,INTERNAL,PATIENT,STAFF ui;
+    class API,IAPI,DOMAIN,WORKER,HOOK app;
+    class DB,OBJECT,BACKUP data;
+    class PAY,ID,WA external;

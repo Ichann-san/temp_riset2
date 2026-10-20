@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1840" height="1590" viewBox="0 0 1840 1590">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="330" y="180" width="370" height="705" rx="10" fill="#FFFFFF" stroke="#C7D5CC" stroke-width="1.2"/>
+<text x="344" y="205" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#526158" data-owner="web-zone" data-max-right="688">WEB / ACCESS BOUNDARIES — TARGET SPLIT</text>
+<rect x="770" y="180" width="490" height="890" rx="10" fill="#FFFFFF" stroke="#C7D5CC" stroke-width="1.2"/>
+<text x="784" y="205" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#526158" data-owner="app-zone" data-max-right="1248">ONE MODULAR FLASK CODEBASE</text>
+<rect x="50" y="940" width="650" height="150" rx="10" fill="#FFFFFF" stroke="#C7D5CC" stroke-width="1.2"/>
+<text x="64" y="965" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#526158" data-owner="current" data-max-right="688">CURRENT LOCAL IMPLEMENTATION — CONNECTED REGISTRATION SLICE</text>
+<polyline points="280,445 310,445 310,290 355,290" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="515,345 515,380" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="280,785 310,785 310,630 355,630" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="515,685 515,720" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="675,455 730,455 730,322 810,322" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="675,795 730,795 730,525 810,525" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="1210,322 1240,322 1240,690 1210,690" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="1010,590 1010,635" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="1010,765 1010,785" fill="none" stroke="#49705A" stroke-width="1.6"   marker-end="url(#arrow)"/>
+<polyline points="1210,840 1320,840 1320,352 1370,352" fill="none" stroke="#49705A" stroke-width="1.6"   marker-end="url(#arrow)"/>
+<polyline points="810,710 790,710 790,985 810,985" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="1210,370 1285,370 1285,635 1370,635" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="1790,900 1810,900 1810,390 1790,390" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<polyline points="1580,820 1580,710" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="950,1050 950,1080 495,1080 495,1130" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<polyline points="1090,1050 1090,1100 825,1100 825,1130" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<polyline points="1580,1000 1580,1090 1155,1090 1155,1130" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="165,1003 200,1003" fill="none" stroke="#49705A" stroke-width="1.6"   marker-end="url(#arrow)"/>
+<polyline points="295,1003 330,1003" fill="none" stroke="#49705A" stroke-width="1.6"   marker-end="url(#arrow)"/>
+<polyline points="425,1003 460,1003" fill="none" stroke="#49705A" stroke-width="1.6"   marker-end="url(#arrow)"/>
+<polyline points="555,1003 590,1003" fill="none" stroke="#49705A" stroke-width="1.6"   marker-end="url(#arrow)"/>
+<text x="50" y="64" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#172C22" data-owner="page-title" data-max-right="1750">ISLAH MCU | Technical Architecture</text>
+<text x="50" y="100" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#526158" data-owner="page-subtitle" data-max-right="1750">Target deployment with current implementation identified  •  Modular Flask + PostgreSQL  •  19 October 2026</text>
+<rect x="50" y="123" width="450" height="26" rx="4" fill="#EAF6EE" stroke="#16801C" stroke-width="1.2"/>
+<text x="62" y="140" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#14592C" data-owner="legend-live" data-max-right="486">Implemented backend / code</text>
+<rect x="530" y="123" width="450" height="26" rx="4" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="542" y="140" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#725211" data-owner="legend-planned" data-max-right="966">Planned capability / deployment</text>
+<rect x="1010" y="123" width="450" height="26" rx="4" fill="#F3F4F6" stroke="#8D98A6" stroke-width="1.2"/>
+<text x="1022" y="140" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#485667" data-owner="legend-pending" data-max-right="1446">Unresolved hospital decision</text>
+<rect x="50" y="370" width="230" height="150" rx="8" fill="#FFFFFF" stroke="#A9B7AF" stroke-width="1.2"/>
+<text x="66" y="393" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#34443B" data-owner="public-browser" data-max-right="266">CLIENT</text>
+<text x="66" y="418" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="public-browser" data-max-right="266">Patient browser</text>
+<text x="66" y="443" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="public-browser" data-max-right="266">Client-rendered workspace.</text>
+<text x="66" y="463" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="public-browser" data-max-right="266">Same-origin API requests.</text>
+<text x="66" y="483" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="public-browser" data-max-right="266">No direct database access.</text>
+<rect x="50" y="710" width="230" height="150" rx="8" fill="#FFFFFF" stroke="#A9B7AF" stroke-width="1.2"/>
+<text x="66" y="733" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#34443B" data-owner="staff-browser" data-max-right="266">CLIENT</text>
+<text x="66" y="758" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="staff-browser" data-max-right="266">Staff browser</text>
+<text x="66" y="783" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="staff-browser" data-max-right="266">Role-specific workspaces.</text>
+<text x="66" y="803" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="staff-browser" data-max-right="266">Hospital staff / doctors /</text>
+<text x="66" y="823" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="staff-browser" data-max-right="266">management / editor.</text>
+<rect x="355" y="235" width="320" height="110" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="371" y="258" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="public-ingress" data-max-right="661">PLANNED</text>
+<text x="371" y="283" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="public-ingress" data-max-right="661">Public ingress</text>
+<text x="371" y="308" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="public-ingress" data-max-right="661">HTTPS / rate limiting / public routing.</text>
+<text x="371" y="328" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="public-ingress" data-max-right="661">No vendor or instance count selected.</text>
+<rect x="355" y="380" width="320" height="150" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="371" y="403" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="public-web" data-max-right="661">UI EXISTS / DEPLOYMENT SPLIT PLANNED</text>
+<text x="371" y="428" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="public-web" data-max-right="661">Next.js patient portal</text>
+<text x="371" y="453" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="public-web" data-max-right="661">Portal UI exists in current frontend.</text>
+<text x="371" y="473" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="public-web" data-max-right="661">Target: separately deployed surface.</text>
+<text x="371" y="493" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="public-web" data-max-right="661">Proxy approved public API routes.</text>
+<rect x="355" y="575" width="320" height="110" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="371" y="598" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="staff-ingress" data-max-right="661">PLANNED</text>
+<text x="371" y="623" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="staff-ingress" data-max-right="661">Private staff ingress</text>
+<text x="371" y="648" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="staff-ingress" data-max-right="661">Hospital network / VPN; SSO / MFA.</text>
+<text x="371" y="668" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="staff-ingress" data-max-right="661">Network and identity setup pending.</text>
+<rect x="355" y="720" width="320" height="150" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="371" y="743" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="staff-web" data-max-right="661">UI EXISTS / DEPLOYMENT SPLIT PLANNED</text>
+<text x="371" y="768" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="staff-web" data-max-right="661">Next.js staff portal</text>
+<text x="371" y="793" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="staff-web" data-max-right="661">Staff UI exists in current frontend.</text>
+<text x="371" y="813" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="staff-web" data-max-right="661">Target: private deployment surface.</text>
+<text x="371" y="833" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="staff-web" data-max-right="661">Server authorization still required.</text>
+<rect x="810" y="250" width="400" height="145" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="826" y="273" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="public-api" data-max-right="1196">LIVE REGISTRATION CORE / TARGET API SPLIT</text>
+<text x="826" y="298" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="public-api" data-max-right="1196">Public Flask API</text>
+<text x="826" y="323" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="public-api" data-max-right="1196">Registration API is implemented.</text>
+<text x="826" y="343" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="public-api" data-max-right="1196">Target: public route allowlist and ownership checks.</text>
+<text x="826" y="363" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="public-api" data-max-right="1196">Separate public deployment is not built yet.</text>
+<rect x="810" y="460" width="400" height="130" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="826" y="483" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="staff-api" data-max-right="1196">PLANNED</text>
+<text x="826" y="508" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="staff-api" data-max-right="1196">Internal Flask API</text>
+<text x="826" y="533" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="staff-api" data-max-right="1196">Staff route allowlist; role / unit authorization.</text>
+<text x="826" y="553" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="staff-api" data-max-right="1196">Current staff workspaces use local UI records.</text>
+<text x="826" y="573" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="staff-api" data-max-right="1196">No production staff API deployment yet.</text>
+<rect x="810" y="635" width="400" height="130" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="826" y="658" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="domain-code" data-max-right="1196">REGISTRATION LIVE / OTHER MODULES PLANNED</text>
+<text x="826" y="683" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="domain-code" data-max-right="1196">Shared application modules</text>
+<text x="826" y="708" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="domain-code" data-max-right="1196">Identity / catalog / registration / queues / exams</text>
+<text x="826" y="728" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="domain-code" data-max-right="1196">Billing / documents / notifications / reports</text>
+<text x="826" y="748" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="domain-code" data-max-right="1196">Shared code, not a separate network service.</text>
+<rect x="810" y="785" width="400" height="130" rx="8" fill="#EAF6EE" stroke="#16801C" stroke-width="1.2"/>
+<text x="826" y="808" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#14592C" data-owner="pool" data-max-right="1196">POOL AND REGISTRATION TRANSACTIONS LIVE</text>
+<text x="826" y="833" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="pool" data-max-right="1196">Bounded connection pools</text>
+<text x="826" y="858" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="pool" data-max-right="1196">psycopg pool, short PostgreSQL transactions.</text>
+<text x="826" y="878" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="pool" data-max-right="1196">Registration locking / uniqueness / idempotency.</text>
+<text x="826" y="898" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="pool" data-max-right="1196">Separate deployment credentials: target design.</text>
+<rect x="810" y="940" width="400" height="110" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="826" y="963" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="adapters" data-max-right="1196">PLANNED</text>
+<text x="826" y="988" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="adapters" data-max-right="1196">External integration adapters</text>
+<text x="826" y="1013" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="adapters" data-max-right="1196">Payment / signed webhook and identity contracts.</text>
+<text x="826" y="1033" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="adapters" data-max-right="1196">Provider selection and implementations pending.</text>
+<rect x="1370" y="250" width="420" height="205" rx="8" fill="#EAF6EE" stroke="#16801C" stroke-width="1.2"/>
+<text x="1386" y="273" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#14592C" data-owner="postgres" data-max-right="1776">REGISTRATION LIVE / FULL SCHEMA PLANNED</text>
+<text x="1386" y="298" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="postgres" data-max-right="1776">Private PostgreSQL</text>
+<text x="1386" y="323" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="postgres" data-max-right="1776">Implemented: principals, service-date capacity,</text>
+<text x="1386" y="343" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="postgres" data-max-right="1776">patients, applications and reservations.</text>
+<text x="1386" y="363" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="postgres" data-max-right="1776">H+1 date, row locks and FIFO are database-owned.</text>
+<text x="1386" y="383" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="postgres" data-max-right="1776">NIK: keyed HMAC + last four digits only.</text>
+<text x="1386" y="403" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="postgres" data-max-right="1776">Planned: clinical / billing records, JSONB and outbox.</text>
+<text x="1386" y="423" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="postgres" data-max-right="1776">No second authoritative database is proposed.</text>
+<rect x="1370" y="560" width="420" height="150" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="1386" y="583" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="objects" data-max-right="1776">PLANNED</text>
+<text x="1386" y="608" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="objects" data-max-right="1776">Private object storage</text>
+<text x="1386" y="633" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="objects" data-max-right="1776">Quarantined imports; versioned results / PDFs.</text>
+<text x="1386" y="653" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="objects" data-max-right="1776">Private, authorized file access.</text>
+<text x="1386" y="673" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="objects" data-max-right="1776">No medical files on a public CDN.</text>
+<text x="1386" y="693" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="objects" data-max-right="1776">Storage provider and implementation pending.</text>
+<rect x="1370" y="820" width="420" height="180" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="1386" y="843" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="worker" data-max-right="1776">PLANNED</text>
+<text x="1386" y="868" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="worker" data-max-right="1776">Background worker</text>
+<text x="1386" y="893" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="worker" data-max-right="1776">Claim committed PostgreSQL outbox jobs.</text>
+<text x="1386" y="913" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="worker" data-max-right="1776">CSV validation, PDF generation and notification.</text>
+<text x="1386" y="933" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="worker" data-max-right="1776">Lease / retry jobs; record outcome and failures.</text>
+<text x="1386" y="953" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="worker" data-max-right="1776">At-least-once delivery; idempotent handlers.</text>
+<text x="1386" y="973" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="worker" data-max-right="1776">Workers and outbox are not implemented yet.</text>
+<rect x="355" y="1130" width="280" height="130" rx="8" fill="#F3F4F6" stroke="#8D98A6" stroke-width="1.2"/>
+<text x="371" y="1153" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#485667" data-owner="payment-provider" data-max-right="621">PLANNED INTEGRATION / PROVIDER TBD</text>
+<text x="371" y="1178" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="payment-provider" data-max-right="621">Payment gateway</text>
+<text x="371" y="1203" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="payment-provider" data-max-right="621">Provider / fees: undecided.</text>
+<text x="371" y="1223" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="payment-provider" data-max-right="621">Verify signed events before confirming.</text>
+<text x="371" y="1243" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="payment-provider" data-max-right="621">Never trust the browser redirect.</text>
+<rect x="685" y="1130" width="280" height="130" rx="8" fill="#F3F4F6" stroke="#8D98A6" stroke-width="1.2"/>
+<text x="701" y="1153" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#485667" data-owner="identity-provider" data-max-right="951">OPTIONAL INTERFACE / CONTRACT TBD</text>
+<text x="701" y="1178" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="identity-provider" data-max-right="951">Identity integration</text>
+<text x="701" y="1203" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="identity-provider" data-max-right="951">SIMRS / RR / Dukcapil: contract TBD.</text>
+<text x="701" y="1223" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="identity-provider" data-max-right="951">No synchronization assumed.</text>
+<text x="701" y="1243" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="identity-provider" data-max-right="951">Production identity flow pending.</text>
+<rect x="1015" y="1130" width="280" height="130" rx="8" fill="#F3F4F6" stroke="#8D98A6" stroke-width="1.2"/>
+<text x="1031" y="1153" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#485667" data-owner="whatsapp-provider" data-max-right="1281">PLANNED INTEGRATION / PROVIDER TBD</text>
+<text x="1031" y="1178" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="whatsapp-provider" data-max-right="1281">WhatsApp provider</text>
+<text x="1031" y="1203" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="whatsapp-provider" data-max-right="1281">Send an authenticated document link.</text>
+<text x="1031" y="1223" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="whatsapp-provider" data-max-right="1281">Track delivery separately from results.</text>
+<text x="1031" y="1243" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="whatsapp-provider" data-max-right="1281">Provider contract / integration pending.</text>
+<rect x="1370" y="1130" width="420" height="150" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="1386" y="1153" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="operations" data-max-right="1776">PLANNED</text>
+<text x="1386" y="1178" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="operations" data-max-right="1776">Operational safeguards</text>
+<text x="1386" y="1203" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="operations" data-max-right="1776">Metrics / health checks / restricted audit access.</text>
+<text x="1386" y="1223" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="operations" data-max-right="1776">Encrypted backups and tested restore process.</text>
+<text x="1386" y="1243" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="operations" data-max-right="1776">PostgreSQL PITR / private object versioning.</text>
+<text x="1386" y="1263" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="operations" data-max-right="1776">Full production setup remains planned.</text>
+<rect x="1283" y="735" width="30" height="22" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1.2"/>
+<text x="1283" y="747" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#14592C" data-owner="sql-label" data-max-right="1313">SQL</text>
+<rect x="1370" y="532" width="420" height="21" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1.2"/>
+<text x="1370" y="543" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#725211" data-owner="files-label" data-max-right="1790">Authorized file operations</text>
+<rect x="1430" y="765" width="280" height="22" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1.2"/>
+<text x="1430" y="777" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#725211" data-owner="worker-file-label" data-max-right="1710">Read imports / write private PDFs</text>
+<rect x="70" y="980" width="95" height="46" rx="4" fill="#EAF6EE" stroke="#16801C" stroke-width="1.2"/>
+<text x="77" y="1007" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#14592C" data-owner="c-browser" data-max-right="162">Browser</text>
+<rect x="200" y="980" width="95" height="46" rx="4" fill="#EAF6EE" stroke="#16801C" stroke-width="1.2"/>
+<text x="207" y="1007" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#14592C" data-owner="c-next" data-max-right="292">Next.js</text>
+<rect x="330" y="980" width="95" height="46" rx="4" fill="#EAF6EE" stroke="#16801C" stroke-width="1.2"/>
+<text x="337" y="1007" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#14592C" data-owner="c-flask" data-max-right="422">Waitress / Flask</text>
+<rect x="460" y="980" width="95" height="46" rx="4" fill="#EAF6EE" stroke="#16801C" stroke-width="1.2"/>
+<text x="467" y="1007" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#14592C" data-owner="c-pool" data-max-right="552">Bounded pool</text>
+<rect x="590" y="980" width="95" height="46" rx="4" fill="#EAF6EE" stroke="#16801C" stroke-width="1.2"/>
+<text x="597" y="1007" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#14592C" data-owner="c-db" data-max-right="682">PostgreSQL</text>
+<text x="70" y="1053" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#526158" data-owner="current-note" data-max-right="680">Next.js rewrites /api/v1/* to 127.0.0.1:5000; no browser-to-DB connection.</text>
+<text x="70" y="1070" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#526158" data-owner="current-note" data-max-right="680">Operator CLI opens H+1. Review tokens exist; production account / staff security does not.</text>
+<rect x="50" y="1350" width="850" height="180" rx="8" fill="#FAFCFB" stroke="#CCD8D1" stroke-width="1.2"/>
+<text x="66" y="1373" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#34443B" data-owner="deployment-note" data-max-right="886">DESIGN NOTE</text>
+<text x="66" y="1398" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="deployment-note" data-max-right="886">Deployment and access principles</text>
+<text x="66" y="1423" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="deployment-note" data-max-right="886">Docker containers are proposed; Compose suits development / pilot deployment.</text>
+<text x="66" y="1443" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="deployment-note" data-max-right="886">Scale HTTP processes / replicas within database and resource budgets; no fixed SLA promised.</text>
+<text x="66" y="1463" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="deployment-note" data-max-right="886">Target: separate public / private entrypoints, service credentials and route allowlists.</text>
+<text x="66" y="1483" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="deployment-note" data-max-right="886">Enforce account ownership, staff roles and unit scope on every authorized server operation.</text>
+<text x="66" y="1503" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="deployment-note" data-max-right="886">PostgreSQL is the single authoritative database; MongoDB / Cassandra are not required.</text>
+<rect x="940" y="1350" width="850" height="180" rx="8" fill="#F3F4F6" stroke="#8D98A6" stroke-width="1.2"/>
+<text x="956" y="1373" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#485667" data-owner="pending-note" data-max-right="1776">UNDECIDED</text>
+<text x="956" y="1398" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="pending-note" data-max-right="1776">Production decisions remain open</text>
+<text x="956" y="1423" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="pending-note" data-max-right="1776">Hosting, reverse proxy / load balancer, replica counts and monitoring / backup products.</text>
+<text x="956" y="1443" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="pending-note" data-max-right="1776">Production account verification, staff SSO / MFA, detailed permissions and result delegation.</text>
+<text x="956" y="1463" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="pending-note" data-max-right="1776">Payment provider, charges, reconciliation, hold expiration and late-payment handling.</text>
+<text x="956" y="1483" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="pending-note" data-max-right="1776">Integration contracts, official result templates, retention and operational recovery objectives.</text>
+<text x="956" y="1503" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="pending-note" data-max-right="1776">Clinical queue inputs / constraints need hospital validation before automatic scheduling.</text>
+</svg>

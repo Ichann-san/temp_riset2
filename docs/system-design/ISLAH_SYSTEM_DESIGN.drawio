@@ -1,0 +1,413 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="ISLAH design documentation" version="24.7.17" type="device" compressed="false">
+  <diagram id="system-overview" name="01 — System Overview">
+    <mxGraphModel dx="1840" dy="1410" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1840" pageHeight="1410" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="platform" value="MCU SERVICE PLATFORM — TARGET CAPABILITIES" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C7D5CC;strokeWidth=1;align=left;verticalAlign=top;spacingTop=12;spacingLeft=14;fontSize=12;fontStyle=1;fontColor=#526158;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="350" y="180" width="1080" height="940" as="geometry" />
+        </mxCell>
+        <mxCell id="patient-registration" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#49705A;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="patient" target="registration">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="registration-payment" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="registration" target="payment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-arrival" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="payment" target="arrival">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-gateway" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=0.5;exitY=0.0;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;dashed=1;dashPattern=6 4;startArrow=block;startFill=1;" edge="1" parent="1" source="payment" target="gateway">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="890" y="210" />
+              <mxPoint x="1450" y="210" />
+              <mxPoint x="1450" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrival-routing" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="arrival" target="routing">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1240" y="470" />
+              <mxPoint x="540" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="routing-examination" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="routing" target="examination">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="examination-results" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="examination" target="unit-results">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="routing-repeat" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=1.0;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="examination" target="routing">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="890" y="745" />
+              <mxPoint x="540" y="745" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="results-final" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="unit-results" target="final-review">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1240" y="785" />
+              <mxPoint x="540" y="785" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="final-delivery" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.49714;exitPerimeter=0;entryX=0.0;entryY=0.49714;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="final-review" target="delivery">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="results-report" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=0.76667;exitY=1.0;exitPerimeter=0;entryX=0.76667;entryY=0.0;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="unit-results" target="management">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="delivery-notification" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.74286;exitPerimeter=0;entryX=0.0;entryY=0.49714;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="delivery" target="notification">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1065" y="950" />
+              <mxPoint x="1065" y="1015" />
+              <mxPoint x="1450" y="1015" />
+              <mxPoint x="1450" y="907" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hospital-platform" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="hospital-team" target="platform">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oversight-platform" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.48649;exitPerimeter=0;entryX=0.0;entryY=0.80851;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="oversight" target="platform">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="collective-platform" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=0.0;exitY=0.5;exitPerimeter=0;entryX=1.0;entryY=0.45745;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="collective-intake" target="platform">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="page-title" value="ISLAH MCU | System Overview" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontSize=30;fontStyle=1;fontColor=#172C22;" vertex="1" parent="1">
+          <mxGeometry x="50" y="34" width="1700" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="page-subtitle" value="RSUD Haji Provinsi Jawa Timur  •  End-to-end service design  •  19 October 2026" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontSize=15;fontStyle=0;fontColor=#526158;" vertex="1" parent="1">
+          <mxGeometry x="50" y="85" width="1700" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-live" value="Implemented backend / code" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=15;fillColor=#EAF6EE;strokeColor=#16801C;fontColor=#14592C;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="50" y="123" width="450" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-planned" value="Planned capability / deployment" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=15;fillColor=#FFF8E8;strokeColor=#BE9947;fontColor=#725211;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="530" y="123" width="450" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-pending" value="Unresolved hospital decision" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=15;fillColor=#F3F4F6;strokeColor=#8D98A6;fontColor=#485667;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="123" width="450" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="patient" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#34443B;&quot;&gt;&lt;b&gt;ACTOR&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Patient / representative&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Uses a responsible account.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Patient may be someone else.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Submits one patient per booking.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Production account login: planned.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFFFFF;strokeColor=#A9B7AF;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="50" y="235" width="250" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="hospital-team" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#34443B;&quot;&gt;&lt;b&gt;ACTOR&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Clinical operations&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;MCU staff: arrival / worklists&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Unit staff: exams / result input&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Unit doctors: result verification&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;MCU doctors: final review&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Workspaces exist in the UI.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Clinical backend: planned.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFFFFF;strokeColor=#A9B7AF;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="50" y="520" width="250" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="oversight" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#34443B;&quot;&gt;&lt;b&gt;ACTOR&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Management / editor&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Management: reports / feedback&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Editor: calendar / service catalog&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Uses staff workspace.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Production permissions: unresolved.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFFFFF;strokeColor=#A9B7AF;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="50" y="850" width="250" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="registration" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#14592C;&quot;&gt;&lt;b&gt;LIVE REGISTRATION BACKEND&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;1  Registration&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;H+1 date assigned by the server.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Validate patient and account limits.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Reserve main place or join FIFO.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Return a registration reference.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#EAF6EE;strokeColor=#16801C;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="390" y="235" width="300" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="payment" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;2  Payment &amp;amp; confirmation&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Hold remains while payment is due.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Apply only verified payment.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Convert held place to confirmed.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Issue official MCU queue number.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="740" y="235" width="300" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="arrival" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;3  Arrival &amp;amp; re-registration&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;MCU staff checks booking / identity.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Record arrival and visit readiness.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Prepare required examinations.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Registration FIFO is not this queue.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="235" width="300" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="routing" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;4  Clinical queue routing&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Choose an eligible next unit.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Use capacity, duration and travel.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Respect clinical prerequisites.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Show room / location guidance.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Algorithm and data need validation.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="390" y="520" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="examination" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;5  Unit examination&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Record staff / doctor presence.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Record patient IN and OUT times.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Perform the required examination.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Physical completion differs from&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;result verification.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="740" y="520" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="unit-results" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;6  Unit results &amp;amp; verification&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Unit staff submits result revision.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Unit doctor checks / verifies it.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Record approved charges / honor.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Financial rules still need approval.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="520" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="final-review" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;7  Final MCU review&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Wait for all required unit results.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;MCU doctor verifies the record.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Handle corrections with history.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Approve final result document.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="390" y="820" width="300" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="delivery" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;8  Results &amp;amp; certificates&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Authorized results / visit history.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Request eligible certificates.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Generate / deliver private documents.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Notify without exposing medical data.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Submit service feedback.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="740" y="820" width="300" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="management" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Reports &amp;amp; configuration&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Aggregated wait / TAT metrics.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Feedback and capacity reporting.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Manage calendar and service catalog.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Role and unit permissions: pending.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="820" width="300" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="gateway" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#485667;&quot;&gt;&lt;b&gt;PLANNED / PROVIDER UNDECIDED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Payment gateway&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Online payment provider: TBD.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Verified events confirm a held place.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;No amount or timeout invented.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;No payment integration built yet.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#F3F4F6;strokeColor=#8D98A6;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="235" width="310" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="collective-intake" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;PLANNED / BATCH RULES UNRESOLVED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Collective intake&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;MCU doctor uploads a CSV batch.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Validate rows and review the preview.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Pass accepted participants to booking.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Batch allocation, account and payment&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;rules require hospital decisions.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="520" width="310" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="notification" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Patient notification&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;WhatsApp provider: planned.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Notify patient when document is ready.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Use an authenticated result link.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Delivery failure needs retry / review.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="820" width="310" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="record-note" value="One controlled record model spans the service; PostgreSQL is the authoritative database.&lt;br&gt;Only the registration backend is connected today. Most clinical screens use local browser state." style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontSize=14;fontStyle=0;fontColor=#526158;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1042" width="1000" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="gateway-label" value="Payment request / verified event" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacing=0;fontSize=12;fontStyle=0;fontColor=#725211;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="187" width="340" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="arrival-label" value="After staff validates the arriving patient" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacing=0;fontSize=12;fontStyle=0;fontColor=#725211;" vertex="1" parent="1">
+          <mxGeometry x="740" y="443" width="410" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="routing-loop-label" value="More examinations: re-evaluate the next eligible unit" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacing=0;fontSize=12;fontStyle=0;fontColor=#725211;" vertex="1" parent="1">
+          <mxGeometry x="560" y="716" width="310" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="final-label" value="All required unit results verified" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacing=0;fontSize=12;fontStyle=0;fontColor=#725211;" vertex="1" parent="1">
+          <mxGeometry x="770" y="758" width="450" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="metrics-label" value="Aggregate metrics" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacing=0;fontSize=11;fontStyle=0;fontColor=#725211;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="724" width="190" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="capacity-rules" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#14592C;&quot;&gt;&lt;b&gt;IMPLEMENTED REGISTRATION RULES&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Registration invariants&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;100 main places = held + confirmed. 50 FIFO waiting places are not extra confirmed exams.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Only H+1, using Asia/Jakarta. Operator opens the service date; patients cannot choose a date.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Final submission holds a place. Owner cancellation releases it and promotes FIFO.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;One unfinished application per account; one active registration per account / service date.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Duplicate NIK per service date is rejected. No automatic hold-expiry timer is implemented.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#EAF6EE;strokeColor=#16801C;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1160" width="850" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="open-rules" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#485667;&quot;&gt;&lt;b&gt;UNDECIDED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Hospital decisions still needed&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Payment provider, fees, refund / reconciliation rules, and hold expiry or abandonment policy.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Production account verification, staff access by role / unit, and medical-result delegation.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Clinical scheduling constraints, unit durations / travel times, official services and tariffs.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;SIMRS / identity interfaces, notification contracts, opening hours and operational exceptions.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Payment confirmation and official queue-number issuance remain planned; no latency SLA set.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#F3F4F6;strokeColor=#8D98A6;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="940" y="1160" width="850" height="190" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="technical-architecture" name="02 — Technical Architecture">
+    <mxGraphModel dx="1840" dy="1590" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1840" pageHeight="1590" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="web-zone" value="WEB / ACCESS BOUNDARIES — TARGET SPLIT" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C7D5CC;strokeWidth=1;align=left;verticalAlign=top;spacingTop=12;spacingLeft=14;fontSize=12;fontStyle=1;fontColor=#526158;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="330" y="180" width="370" height="705" as="geometry" />
+        </mxCell>
+        <mxCell id="app-zone" value="ONE MODULAR FLASK CODEBASE" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C7D5CC;strokeWidth=1;align=left;verticalAlign=top;spacingTop=12;spacingLeft=14;fontSize=12;fontStyle=1;fontColor=#526158;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="770" y="180" width="490" height="890" as="geometry" />
+        </mxCell>
+        <mxCell id="current" value="CURRENT LOCAL IMPLEMENTATION — CONNECTED REGISTRATION SLICE" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C7D5CC;strokeWidth=1;align=left;verticalAlign=top;spacingTop=12;spacingLeft=14;fontSize=12;fontStyle=1;fontColor=#526158;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="50" y="940" width="650" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="browser-public" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="public-browser" target="public-ingress">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="445" />
+              <mxPoint x="310" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ingress-web" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="public-ingress" target="public-web">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="browser-staff" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="staff-browser" target="staff-ingress">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="785" />
+              <mxPoint x="310" y="630" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="private-web" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="staff-ingress" target="staff-web">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="web-public-api" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.49655;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="public-web" target="public-api">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="730" y="455" />
+              <mxPoint x="730" y="322" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="web-staff-api" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="staff-web" target="staff-api">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="730" y="795" />
+              <mxPoint x="730" y="525" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="public-code" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.49655;exitPerimeter=0;entryX=1.0;entryY=0.42308;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="public-api" target="domain-code">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1240" y="322" />
+              <mxPoint x="1240" y="690" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="staff-code" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="staff-api" target="domain-code">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="code-pool" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#49705A;strokeWidth=1.6;endArrow=block;endFill=1;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="domain-code" target="pool">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pool-db" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#49705A;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.42308;exitPerimeter=0;entryX=0.0;entryY=0.49756;entryPerimeter=0;" edge="1" parent="1" source="pool" target="postgres">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1320" y="840" />
+              <mxPoint x="1320" y="352" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="code-adapters" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=0.0;exitY=0.57692;exitPerimeter=0;entryX=0.0;entryY=0.40909;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="domain-code" target="adapters">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="790" y="710" />
+              <mxPoint x="790" y="985" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="public-files" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.82759;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="public-api" target="objects">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1285" y="370" />
+              <mxPoint x="1285" y="635" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="worker-db" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.44444;exitPerimeter=0;entryX=1.0;entryY=0.68293;entryPerimeter=0;dashed=1;dashPattern=6 4;startArrow=block;startFill=1;" edge="1" parent="1" source="worker" target="postgres">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1810" y="900" />
+              <mxPoint x="1810" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="worker-objects" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=0.5;exitY=0.0;exitPerimeter=0;entryX=0.5;entryY=1.0;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="worker" target="objects">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="adapter-payment" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=0.35;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;dashed=1;dashPattern=6 4;startArrow=block;startFill=1;" edge="1" parent="1" source="adapters" target="payment-provider">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="950" y="1080" />
+              <mxPoint x="495" y="1080" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="adapter-identity" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=0.7;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;dashed=1;dashPattern=6 4;startArrow=block;startFill=1;" edge="1" parent="1" source="adapters" target="identity-provider">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1090" y="1100" />
+              <mxPoint x="825" y="1100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="worker-wa" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#A18135;strokeWidth=1.6;endArrow=block;endFill=1;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;dashed=1;dashPattern=6 4;" edge="1" parent="1" source="worker" target="whatsapp-provider">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1580" y="1090" />
+              <mxPoint x="1155" y="1090" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="current-0" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#49705A;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="c-browser" target="c-next">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="current-1" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#49705A;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="c-next" target="c-flask">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="current-2" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#49705A;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="c-flask" target="c-pool">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="current-3" style="edgeStyle=none;rounded=0;orthogonalLoop=1;html=1;strokeColor=#49705A;strokeWidth=1.6;endArrow=block;endFill=1;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="c-pool" target="c-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="page-title" value="ISLAH MCU | Technical Architecture" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontSize=30;fontStyle=1;fontColor=#172C22;" vertex="1" parent="1">
+          <mxGeometry x="50" y="34" width="1700" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="page-subtitle" value="Target deployment with current implementation identified  •  Modular Flask + PostgreSQL  •  19 October 2026" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontSize=15;fontStyle=0;fontColor=#526158;" vertex="1" parent="1">
+          <mxGeometry x="50" y="85" width="1700" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-live" value="Implemented backend / code" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=15;fillColor=#EAF6EE;strokeColor=#16801C;fontColor=#14592C;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="50" y="123" width="450" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-planned" value="Planned capability / deployment" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=15;fillColor=#FFF8E8;strokeColor=#BE9947;fontColor=#725211;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="530" y="123" width="450" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-pending" value="Unresolved hospital decision" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=15;fillColor=#F3F4F6;strokeColor=#8D98A6;fontColor=#485667;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="123" width="450" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="public-browser" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#34443B;&quot;&gt;&lt;b&gt;CLIENT&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Patient browser&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Client-rendered workspace.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Same-origin API requests.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;No direct database access.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFFFFF;strokeColor=#A9B7AF;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="50" y="370" width="230" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="staff-browser" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#34443B;&quot;&gt;&lt;b&gt;CLIENT&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Staff browser&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Role-specific workspaces.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Hospital staff / doctors /&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;management / editor.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFFFFF;strokeColor=#A9B7AF;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="50" y="710" width="230" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="public-ingress" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Public ingress&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;HTTPS / rate limiting / public routing.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;No vendor or instance count selected.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="355" y="235" width="320" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="public-web" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;UI EXISTS / DEPLOYMENT SPLIT PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Next.js patient portal&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Portal UI exists in current frontend.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Target: separately deployed surface.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Proxy approved public API routes.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="355" y="380" width="320" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="staff-ingress" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Private staff ingress&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Hospital network / VPN; SSO / MFA.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Network and identity setup pending.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="355" y="575" width="320" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="staff-web" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;UI EXISTS / DEPLOYMENT SPLIT PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Next.js staff portal&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Staff UI exists in current frontend.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Target: private deployment surface.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Server authorization still required.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="355" y="720" width="320" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="public-api" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;LIVE REGISTRATION CORE / TARGET API SPLIT&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Public Flask API&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Registration API is implemented.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Target: public route allowlist and ownership checks.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Separate public deployment is not built yet.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="810" y="250" width="400" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="staff-api" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Internal Flask API&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Staff route allowlist; role / unit authorization.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Current staff workspaces use local UI records.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;No production staff API deployment yet.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="810" y="460" width="400" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="domain-code" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;REGISTRATION LIVE / OTHER MODULES PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Shared application modules&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Identity / catalog / registration / queues / exams&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Billing / documents / notifications / reports&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Shared code, not a separate network service.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="810" y="635" width="400" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="pool" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#14592C;&quot;&gt;&lt;b&gt;POOL AND REGISTRATION TRANSACTIONS LIVE&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Bounded connection pools&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;psycopg pool, short PostgreSQL transactions.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Registration locking / uniqueness / idempotency.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Separate deployment credentials: target design.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#EAF6EE;strokeColor=#16801C;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="810" y="785" width="400" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="adapters" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;External integration adapters&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Payment / signed webhook and identity contracts.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Provider selection and implementations pending.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="810" y="940" width="400" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="postgres" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#14592C;&quot;&gt;&lt;b&gt;REGISTRATION LIVE / FULL SCHEMA PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Private PostgreSQL&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Implemented: principals, service-date capacity,&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;patients, applications and reservations.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;H+1 date, row locks and FIFO are database-owned.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;NIK: keyed HMAC + last four digits only.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Planned: clinical / billing records, JSONB and outbox.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;No second authoritative database is proposed.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#EAF6EE;strokeColor=#16801C;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="250" width="420" height="205" as="geometry" />
+        </mxCell>
+        <mxCell id="objects" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Private object storage&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Quarantined imports; versioned results / PDFs.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Private, authorized file access.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;No medical files on a public CDN.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Storage provider and implementation pending.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="560" width="420" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="worker" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Background worker&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Claim committed PostgreSQL outbox jobs.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;CSV validation, PDF generation and notification.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Lease / retry jobs; record outcome and failures.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;At-least-once delivery; idempotent handlers.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Workers and outbox are not implemented yet.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="820" width="420" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-provider" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#485667;&quot;&gt;&lt;b&gt;PLANNED INTEGRATION / PROVIDER TBD&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Payment gateway&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Provider / fees: undecided.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Verify signed events before confirming.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Never trust the browser redirect.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#F3F4F6;strokeColor=#8D98A6;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="355" y="1130" width="280" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="identity-provider" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#485667;&quot;&gt;&lt;b&gt;OPTIONAL INTERFACE / CONTRACT TBD&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Identity integration&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;SIMRS / RR / Dukcapil: contract TBD.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;No synchronization assumed.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Production identity flow pending.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#F3F4F6;strokeColor=#8D98A6;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="685" y="1130" width="280" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="whatsapp-provider" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#485667;&quot;&gt;&lt;b&gt;PLANNED INTEGRATION / PROVIDER TBD&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;WhatsApp provider&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Send an authenticated document link.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Track delivery separately from results.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Provider contract / integration pending.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#F3F4F6;strokeColor=#8D98A6;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="1130" width="280" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="operations" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#725211;&quot;&gt;&lt;b&gt;PLANNED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Operational safeguards&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Metrics / health checks / restricted audit access.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Encrypted backups and tested restore process.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;PostgreSQL PITR / private object versioning.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Full production setup remains planned.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FFF8E8;strokeColor=#BE9947;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="1130" width="420" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="sql-label" value="SQL" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacing=0;fontSize=12;fontStyle=1;fontColor=#14592C;" vertex="1" parent="1">
+          <mxGeometry x="1283" y="735" width="30" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="files-label" value="Authorized file operations" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacing=0;fontSize=11;fontStyle=0;fontColor=#725211;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="532" width="420" height="21" as="geometry" />
+        </mxCell>
+        <mxCell id="worker-file-label" value="Read imports / write private PDFs" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacing=0;fontSize=12;fontStyle=0;fontColor=#725211;" vertex="1" parent="1">
+          <mxGeometry x="1430" y="765" width="280" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c-browser" value="Browser" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=8;fillColor=#EAF6EE;strokeColor=#16801C;fontColor=#14592C;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="70" y="980" width="95" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="c-next" value="Next.js" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=8;fillColor=#EAF6EE;strokeColor=#16801C;fontColor=#14592C;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="200" y="980" width="95" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="c-flask" value="Waitress / Flask" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=8;fillColor=#EAF6EE;strokeColor=#16801C;fontColor=#14592C;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="330" y="980" width="95" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="c-pool" value="Bounded pool" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=8;fillColor=#EAF6EE;strokeColor=#16801C;fontColor=#14592C;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="460" y="980" width="95" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="c-db" value="PostgreSQL" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=8;fillColor=#EAF6EE;strokeColor=#16801C;fontColor=#14592C;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="590" y="980" width="95" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="current-note" value="Next.js rewrites /api/v1/* to 127.0.0.1:5000; no browser-to-DB connection.&lt;br&gt;Operator CLI opens H+1. Review tokens exist; production account / staff security does not." style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacing=0;fontSize=11;fontStyle=0;fontColor=#526158;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1042" width="610" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="deployment-note" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#34443B;&quot;&gt;&lt;b&gt;DESIGN NOTE&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Deployment and access principles&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Docker containers are proposed; Compose suits development / pilot deployment.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Scale HTTP processes / replicas within database and resource budgets; no fixed SLA promised.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Target: separate public / private entrypoints, service credentials and route allowlists.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Enforce account ownership, staff roles and unit scope on every authorized server operation.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;PostgreSQL is the single authoritative database; MongoDB / Cassandra are not required.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#FAFCFB;strokeColor=#CCD8D1;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1350" width="850" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="pending-note" value="&lt;div style=&quot;line-height:1.45;&quot;&gt;&lt;span style=&quot;font-size:10px;color:#485667;&quot;&gt;&lt;b&gt;UNDECIDED&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:16px;color:#172C22;&quot;&gt;&lt;b&gt;Production decisions remain open&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Hosting, reverse proxy / load balancer, replica counts and monitoring / backup products.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Production account verification, staff SSO / MFA, detailed permissions and result delegation.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Payment provider, charges, reconciliation, hold expiration and late-payment handling.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Integration contracts, official result templates, retention and operational recovery objectives.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;&quot;&gt;Clinical queue inputs / constraints need hospital validation before automatic scheduling.&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontFamily=Arial;overflow=hidden;rounded=1;arcSize=5;fillColor=#F3F4F6;strokeColor=#8D98A6;strokeWidth=1.2;align=left;verticalAlign=top;spacing=16;fontSize=13;fontColor=#34443B;" vertex="1" parent="1">
+          <mxGeometry x="940" y="1350" width="850" height="180" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

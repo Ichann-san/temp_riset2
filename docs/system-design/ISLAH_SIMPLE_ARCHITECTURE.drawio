@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" compressed="false">
+  <diagram id="simple-architecture" name="System Architecture">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1380" pageHeight="900" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="external-frame" value="EXTERNAL SYSTEMS (PLANNED)" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=14;fillColor=none;verticalAlign=top;align=left;spacingTop=12;spacingLeft=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="70" width="720" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="presentation-frame" value="PRESENTATION LAYER" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=14;fillColor=none;verticalAlign=top;align=left;spacingTop=12;spacingLeft=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="290" width="230" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="service-frame" value="SERVICE LAYER" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=14;fillColor=none;verticalAlign=top;align=left;spacingTop=12;spacingLeft=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="290" width="720" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="data-frame" value="DATA LAYER" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=14;fillColor=none;verticalAlign=top;align=left;spacingTop=12;spacingLeft=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="290" width="280" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="payment" value="Payment Gateway&#10;Provider TBD" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=14;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="650" y="125" width="150" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications" value="Notification Provider&#10;WhatsApp (planned)" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=14;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="830" y="125" width="160" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="patients" value="Patient Browser&#10;Registration / Patient Portal" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=14;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="65" y="375" width="180" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="staff" value="Staff Browser&#10;Role-based Workspace" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=14;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="65" y="535" width="180" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="ingress" value="HTTPS Entry Point&#10;Reverse Proxy / Load Balancer&#10;(planned)" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=14;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="325" y="430" width="180" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="web" value="Next.js Frontend&#10;Patient / Staff Portals" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=14;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="540" y="430" width="180" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="Flask REST API&#10;Modular Application&#10;Waitress" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=14;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="755" y="430" width="230" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="PostgreSQL&#10;Registration / Capacity&#10;Clinical Records (planned)" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=14;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="385" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="storage" value="Private File Storage&#10;Results / Certificates&#10;(planned)" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=14;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="545" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="patient-access" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=12;endArrow=open;endFill=0;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.2;" edge="1" parent="1" source="patients" target="ingress">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="285" y="417" />
+              <mxPoint x="285" y="450" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="staff-access" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=12;endArrow=open;endFill=0;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.8;" edge="1" parent="1" source="staff" target="ingress">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="285" y="577" />
+              <mxPoint x="285" y="505" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="web-route" value="Web" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=12;endArrow=open;endFill=0;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="ingress" target="web">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="api-route" value="REST API" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=12;endArrow=open;endFill=0;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="web" target="api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="database-access" value="SQL" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=12;endArrow=open;endFill=0;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.32;entryX=0;entryY=0.5;" edge="1" parent="1" source="api" target="db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1035" y="460" />
+              <mxPoint x="1035" y="435" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="file-access" value="Private files" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=12;endArrow=open;endFill=0;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.8;entryX=0;entryY=0.5;" edge="1" parent="1" source="api" target="storage">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1035" y="505" />
+              <mxPoint x="1035" y="590" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="payment-integration" value="Payment API / Verified Callback" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=12;endArrow=open;endFill=0;labelBackgroundColor=#FFFFFF;exitX=0.15;exitY=0;entryX=0.5;entryY=1;startArrow=open;startFill=0;" edge="1" parent="1" source="api" target="payment">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="790" y="255" />
+              <mxPoint x="725" y="255" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="notification-integration" value="Notification API" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=12;endArrow=open;endFill=0;labelBackgroundColor=#FFFFFF;exitX=0.67;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="api" target="notifications">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="ISLAH MCU - SIMPLE SYSTEM ARCHITECTURE" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=14;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="15" width="1290" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="scope-note" value="Target architecture. Current local path: Browser -&gt; Next.js rewrite -&gt; Waitress / Flask -&gt; PostgreSQL.&#10;Clinical backend, staff authorization, external integrations and file storage remain planned.&#10;Next.js renders the workspace in the browser; browsers never connect directly to the database.&#10;Application modules: Registration (implemented); Queues, Examinations, Billing and Documents (planned)." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontFamily=Arial;fontSize=13;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="40" y="720" width="1290" height="115" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

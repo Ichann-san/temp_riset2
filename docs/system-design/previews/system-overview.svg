@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1840" height="1410" viewBox="0 0 1840 1410">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<rect x="350" y="180" width="1080" height="940" rx="10" fill="#FFFFFF" stroke="#C7D5CC" stroke-width="1.2"/>
+<text x="364" y="205" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#526158" data-owner="platform" data-max-right="1418">MCU SERVICE PLATFORM — TARGET CAPABILITIES</text>
+<polyline points="300,320 390,320" fill="none" stroke="#49705A" stroke-width="1.6"   marker-end="url(#arrow)"/>
+<polyline points="690,320 740,320" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="1040,320 1090,320" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="890,235 890,210 1450,210 1450,320 1480,320" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<polyline points="1240,405 1240,470 540,470 540,520" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="690,610 740,610" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="1040,610 1090,610" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="890,700 890,745 540,745 540,700" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="1240,700 1240,785 540,785 540,820" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="690,907 740,907" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="1320,700 1320,820" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="1040,950 1065,950 1065,1015 1450,1015 1450,907 1480,907" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="300,650 350,650" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="300,940 350,940" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<polyline points="1480,610 1430,610" fill="none" stroke="#A18135" stroke-width="1.6" stroke-dasharray="6 4"  marker-end="url(#arrow)"/>
+<text x="50" y="64" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#172C22" data-owner="page-title" data-max-right="1750">ISLAH MCU | System Overview</text>
+<text x="50" y="100" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#526158" data-owner="page-subtitle" data-max-right="1750">RSUD Haji Provinsi Jawa Timur  •  End-to-end service design  •  19 October 2026</text>
+<rect x="50" y="123" width="450" height="26" rx="4" fill="#EAF6EE" stroke="#16801C" stroke-width="1.2"/>
+<text x="62" y="140" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#14592C" data-owner="legend-live" data-max-right="486">Implemented backend / code</text>
+<rect x="530" y="123" width="450" height="26" rx="4" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="542" y="140" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#725211" data-owner="legend-planned" data-max-right="966">Planned capability / deployment</text>
+<rect x="1010" y="123" width="450" height="26" rx="4" fill="#F3F4F6" stroke="#8D98A6" stroke-width="1.2"/>
+<text x="1022" y="140" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#485667" data-owner="legend-pending" data-max-right="1446">Unresolved hospital decision</text>
+<rect x="50" y="235" width="250" height="170" rx="8" fill="#FFFFFF" stroke="#A9B7AF" stroke-width="1.2"/>
+<text x="66" y="258" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#34443B" data-owner="patient" data-max-right="286">ACTOR</text>
+<text x="66" y="283" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="patient" data-max-right="286">Patient / representative</text>
+<text x="66" y="308" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="patient" data-max-right="286">Uses a responsible account.</text>
+<text x="66" y="328" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="patient" data-max-right="286">Patient may be someone else.</text>
+<text x="66" y="348" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="patient" data-max-right="286">Submits one patient per booking.</text>
+<text x="66" y="368" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="patient" data-max-right="286">Production account login: planned.</text>
+<rect x="50" y="520" width="250" height="260" rx="8" fill="#FFFFFF" stroke="#A9B7AF" stroke-width="1.2"/>
+<text x="66" y="543" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#34443B" data-owner="hospital-team" data-max-right="286">ACTOR</text>
+<text x="66" y="568" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="hospital-team" data-max-right="286">Clinical operations</text>
+<text x="66" y="593" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="hospital-team" data-max-right="286">MCU staff: arrival / worklists</text>
+<text x="66" y="613" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="hospital-team" data-max-right="286">Unit staff: exams / result input</text>
+<text x="66" y="633" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="hospital-team" data-max-right="286">Unit doctors: result verification</text>
+<text x="66" y="653" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="hospital-team" data-max-right="286">MCU doctors: final review</text>
+<text x="66" y="673" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="hospital-team" data-max-right="286"></text>
+<text x="66" y="693" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="hospital-team" data-max-right="286">Workspaces exist in the UI.</text>
+<text x="66" y="713" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="hospital-team" data-max-right="286">Clinical backend: planned.</text>
+<rect x="50" y="850" width="250" height="185" rx="8" fill="#FFFFFF" stroke="#A9B7AF" stroke-width="1.2"/>
+<text x="66" y="873" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#34443B" data-owner="oversight" data-max-right="286">ACTOR</text>
+<text x="66" y="898" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="oversight" data-max-right="286">Management / editor</text>
+<text x="66" y="923" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="oversight" data-max-right="286">Management: reports / feedback</text>
+<text x="66" y="943" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="oversight" data-max-right="286">Editor: calendar / service catalog</text>
+<text x="66" y="963" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="oversight" data-max-right="286">Uses staff workspace.</text>
+<text x="66" y="983" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="oversight" data-max-right="286">Production permissions: unresolved.</text>
+<rect x="390" y="235" width="300" height="170" rx="8" fill="#EAF6EE" stroke="#16801C" stroke-width="1.2"/>
+<text x="406" y="258" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#14592C" data-owner="registration" data-max-right="676">LIVE REGISTRATION BACKEND</text>
+<text x="406" y="283" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="registration" data-max-right="676">1  Registration</text>
+<text x="406" y="308" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="registration" data-max-right="676">H+1 date assigned by the server.</text>
+<text x="406" y="328" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="registration" data-max-right="676">Validate patient and account limits.</text>
+<text x="406" y="348" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="registration" data-max-right="676">Reserve main place or join FIFO.</text>
+<text x="406" y="368" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="registration" data-max-right="676">Return a registration reference.</text>
+<rect x="740" y="235" width="300" height="170" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="756" y="258" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="payment" data-max-right="1026">PLANNED</text>
+<text x="756" y="283" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="payment" data-max-right="1026">2  Payment &amp; confirmation</text>
+<text x="756" y="308" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="payment" data-max-right="1026">Hold remains while payment is due.</text>
+<text x="756" y="328" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="payment" data-max-right="1026">Apply only verified payment.</text>
+<text x="756" y="348" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="payment" data-max-right="1026">Convert held place to confirmed.</text>
+<text x="756" y="368" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="payment" data-max-right="1026">Issue official MCU queue number.</text>
+<rect x="1090" y="235" width="300" height="170" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="1106" y="258" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="arrival" data-max-right="1376">PLANNED</text>
+<text x="1106" y="283" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="arrival" data-max-right="1376">3  Arrival &amp; re-registration</text>
+<text x="1106" y="308" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="arrival" data-max-right="1376">MCU staff checks booking / identity.</text>
+<text x="1106" y="328" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="arrival" data-max-right="1376">Record arrival and visit readiness.</text>
+<text x="1106" y="348" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="arrival" data-max-right="1376">Prepare required examinations.</text>
+<text x="1106" y="368" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="arrival" data-max-right="1376">Registration FIFO is not this queue.</text>
+<rect x="390" y="520" width="300" height="180" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="406" y="543" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="routing" data-max-right="676">PLANNED</text>
+<text x="406" y="568" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="routing" data-max-right="676">4  Clinical queue routing</text>
+<text x="406" y="593" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="routing" data-max-right="676">Choose an eligible next unit.</text>
+<text x="406" y="613" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="routing" data-max-right="676">Use capacity, duration and travel.</text>
+<text x="406" y="633" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="routing" data-max-right="676">Respect clinical prerequisites.</text>
+<text x="406" y="653" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="routing" data-max-right="676">Show room / location guidance.</text>
+<text x="406" y="673" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="routing" data-max-right="676">Algorithm and data need validation.</text>
+<rect x="740" y="520" width="300" height="180" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="756" y="543" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="examination" data-max-right="1026">PLANNED</text>
+<text x="756" y="568" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="examination" data-max-right="1026">5  Unit examination</text>
+<text x="756" y="593" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="examination" data-max-right="1026">Record staff / doctor presence.</text>
+<text x="756" y="613" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="examination" data-max-right="1026">Record patient IN and OUT times.</text>
+<text x="756" y="633" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="examination" data-max-right="1026">Perform the required examination.</text>
+<text x="756" y="653" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="examination" data-max-right="1026">Physical completion differs from</text>
+<text x="756" y="673" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="examination" data-max-right="1026">result verification.</text>
+<rect x="1090" y="520" width="300" height="180" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="1106" y="543" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="unit-results" data-max-right="1376">PLANNED</text>
+<text x="1106" y="568" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="unit-results" data-max-right="1376">6  Unit results &amp; verification</text>
+<text x="1106" y="593" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="unit-results" data-max-right="1376">Unit staff submits result revision.</text>
+<text x="1106" y="613" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="unit-results" data-max-right="1376">Unit doctor checks / verifies it.</text>
+<text x="1106" y="633" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="unit-results" data-max-right="1376">Record approved charges / honor.</text>
+<text x="1106" y="653" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="unit-results" data-max-right="1376">Financial rules still need approval.</text>
+<rect x="390" y="820" width="300" height="175" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="406" y="843" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="final-review" data-max-right="676">PLANNED</text>
+<text x="406" y="868" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="final-review" data-max-right="676">7  Final MCU review</text>
+<text x="406" y="893" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="final-review" data-max-right="676">Wait for all required unit results.</text>
+<text x="406" y="913" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="final-review" data-max-right="676">MCU doctor verifies the record.</text>
+<text x="406" y="933" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="final-review" data-max-right="676">Handle corrections with history.</text>
+<text x="406" y="953" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="final-review" data-max-right="676">Approve final result document.</text>
+<rect x="740" y="820" width="300" height="175" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="756" y="843" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="delivery" data-max-right="1026">PLANNED</text>
+<text x="756" y="868" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="delivery" data-max-right="1026">8  Results &amp; certificates</text>
+<text x="756" y="893" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="delivery" data-max-right="1026">Authorized results / visit history.</text>
+<text x="756" y="913" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="delivery" data-max-right="1026">Request eligible certificates.</text>
+<text x="756" y="933" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="delivery" data-max-right="1026">Generate / deliver private documents.</text>
+<text x="756" y="953" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="delivery" data-max-right="1026">Notify without exposing medical data.</text>
+<text x="756" y="973" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="delivery" data-max-right="1026">Submit service feedback.</text>
+<rect x="1090" y="820" width="300" height="175" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="1106" y="843" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="management" data-max-right="1376">PLANNED</text>
+<text x="1106" y="868" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="management" data-max-right="1376">Reports &amp; configuration</text>
+<text x="1106" y="893" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="management" data-max-right="1376">Aggregated wait / TAT metrics.</text>
+<text x="1106" y="913" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="management" data-max-right="1376">Feedback and capacity reporting.</text>
+<text x="1106" y="933" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="management" data-max-right="1376">Manage calendar and service catalog.</text>
+<text x="1106" y="953" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="management" data-max-right="1376">Role and unit permissions: pending.</text>
+<rect x="1480" y="235" width="310" height="170" rx="8" fill="#F3F4F6" stroke="#8D98A6" stroke-width="1.2"/>
+<text x="1496" y="258" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#485667" data-owner="gateway" data-max-right="1776">PLANNED / PROVIDER UNDECIDED</text>
+<text x="1496" y="283" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="gateway" data-max-right="1776">Payment gateway</text>
+<text x="1496" y="308" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="gateway" data-max-right="1776">Online payment provider: TBD.</text>
+<text x="1496" y="328" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="gateway" data-max-right="1776">Verified events confirm a held place.</text>
+<text x="1496" y="348" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="gateway" data-max-right="1776">No amount or timeout invented.</text>
+<text x="1496" y="368" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="gateway" data-max-right="1776">No payment integration built yet.</text>
+<rect x="1480" y="520" width="310" height="180" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="1496" y="543" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="collective-intake" data-max-right="1776">PLANNED / BATCH RULES UNRESOLVED</text>
+<text x="1496" y="568" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="collective-intake" data-max-right="1776">Collective intake</text>
+<text x="1496" y="593" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="collective-intake" data-max-right="1776">MCU doctor uploads a CSV batch.</text>
+<text x="1496" y="613" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="collective-intake" data-max-right="1776">Validate rows and review the preview.</text>
+<text x="1496" y="633" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="collective-intake" data-max-right="1776">Pass accepted participants to booking.</text>
+<text x="1496" y="653" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="collective-intake" data-max-right="1776">Batch allocation, account and payment</text>
+<text x="1496" y="673" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="collective-intake" data-max-right="1776">rules require hospital decisions.</text>
+<rect x="1480" y="820" width="310" height="175" rx="8" fill="#FFF8E8" stroke="#BE9947" stroke-width="1.2"/>
+<text x="1496" y="843" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#725211" data-owner="notification" data-max-right="1776">PLANNED</text>
+<text x="1496" y="868" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="notification" data-max-right="1776">Patient notification</text>
+<text x="1496" y="893" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="notification" data-max-right="1776">WhatsApp provider: planned.</text>
+<text x="1496" y="913" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="notification" data-max-right="1776">Notify patient when document is ready.</text>
+<text x="1496" y="933" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="notification" data-max-right="1776">Use an authenticated result link.</text>
+<text x="1496" y="953" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="notification" data-max-right="1776">Delivery failure needs retry / review.</text>
+<text x="390" y="1056" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#526158" data-owner="record-note" data-max-right="1390">One controlled record model spans the service; PostgreSQL is the authoritative database.</text>
+<text x="390" y="1076" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#526158" data-owner="record-note" data-max-right="1390">Only the registration backend is connected today. Most clinical screens use local browser state.</text>
+<rect x="1080" y="187" width="340" height="22" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1.2"/>
+<text x="1080" y="199" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#725211" data-owner="gateway-label" data-max-right="1420">Payment request / verified event</text>
+<rect x="740" y="443" width="410" height="22" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1.2"/>
+<text x="740" y="455" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#725211" data-owner="arrival-label" data-max-right="1150">After staff validates the arriving patient</text>
+<rect x="560" y="716" width="310" height="22" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1.2"/>
+<text x="560" y="728" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#725211" data-owner="routing-loop-label" data-max-right="870">More examinations: re-evaluate the next eligible unit</text>
+<rect x="770" y="758" width="450" height="22" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1.2"/>
+<text x="770" y="770" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#725211" data-owner="final-label" data-max-right="1220">All required unit results verified</text>
+<rect x="1120" y="724" width="190" height="21" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1.2"/>
+<text x="1120" y="735" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#725211" data-owner="metrics-label" data-max-right="1310">Aggregate metrics</text>
+<rect x="50" y="1160" width="850" height="190" rx="8" fill="#EAF6EE" stroke="#16801C" stroke-width="1.2"/>
+<text x="66" y="1183" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#14592C" data-owner="capacity-rules" data-max-right="886">IMPLEMENTED REGISTRATION RULES</text>
+<text x="66" y="1208" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="capacity-rules" data-max-right="886">Registration invariants</text>
+<text x="66" y="1233" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="capacity-rules" data-max-right="886">100 main places = held + confirmed. 50 FIFO waiting places are not extra confirmed exams.</text>
+<text x="66" y="1253" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="capacity-rules" data-max-right="886">Only H+1, using Asia/Jakarta. Operator opens the service date; patients cannot choose a date.</text>
+<text x="66" y="1273" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="capacity-rules" data-max-right="886">Final submission holds a place. Owner cancellation releases it and promotes FIFO.</text>
+<text x="66" y="1293" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="capacity-rules" data-max-right="886">One unfinished application per account; one active registration per account / service date.</text>
+<text x="66" y="1313" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="capacity-rules" data-max-right="886">Duplicate NIK per service date is rejected. No automatic hold-expiry timer is implemented.</text>
+<rect x="940" y="1160" width="850" height="190" rx="8" fill="#F3F4F6" stroke="#8D98A6" stroke-width="1.2"/>
+<text x="956" y="1183" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#485667" data-owner="open-rules" data-max-right="1776">UNDECIDED</text>
+<text x="956" y="1208" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#172C22" data-owner="open-rules" data-max-right="1776">Hospital decisions still needed</text>
+<text x="956" y="1233" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="open-rules" data-max-right="1776">Payment provider, fees, refund / reconciliation rules, and hold expiry or abandonment policy.</text>
+<text x="956" y="1253" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="open-rules" data-max-right="1776">Production account verification, staff access by role / unit, and medical-result delegation.</text>
+<text x="956" y="1273" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="open-rules" data-max-right="1776">Clinical scheduling constraints, unit durations / travel times, official services and tariffs.</text>
+<text x="956" y="1293" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="open-rules" data-max-right="1776">SIMRS / identity interfaces, notification contracts, opening hours and operational exceptions.</text>
+<text x="956" y="1313" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#34443B" data-owner="open-rules" data-max-right="1776">Payment confirmation and official queue-number issuance remain planned; no latency SLA set.</text>
+</svg>
