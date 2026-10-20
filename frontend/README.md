@@ -2,6 +2,12 @@
 
 Frontend Next.js 16 (App Router, React 19) untuk layanan Medical Check Up RSUD Haji Provinsi Jawa Timur. Halaman awal (`/`) adalah login dengan akun per peran (lihat **Akun lokal**); admin dapat membuka semua ruang kerja.
 
+> **Pembaruan UI 20 Oktober 2026.** Registrasi langsung menerbitkan **Nomor antrean pendaftaran** (`P-…`). Setelah petugas menyelesaikan daftar ulang, layar petugas menerbitkan **Nomor antrean MCU** (`MCU-…`). Biaya admin tidak menjadi tahap atau syarat penerbitan nomor pada alur UI ini. Beranda/menu memakai pola garis CSS hijau, marun, dan emas di latar paling belakang; langkah registrasi dan layar detail pasien tetap polos. [Keputusan dan batas implementasi](../docs/plans/2026-10-20-two-stage-queue-ui.md).
+
+Perubahan tersebut berlaku pada state UI lokal. Backend dan jalur token masih memakai kontrak lama: referensi aplikasi bukan nomor antrean, dan belum ada API penerbitan kedua nomor atau sinkronisasi daftar ulang ke akun pasien. State petugas bersifat lokal dan tidak bertahan setelah reload. Ketentuan pembayaran dalam catatan 18 Oktober di bawah merupakan riwayat, bukan alur UI terbaru.
+
+Uji alur UI terfokus (jalankan server pada port 3100 terlebih dahulu): `node scripts/queue-flow-check.mjs`. Menggunakan browser headless sementara, data sintetis, dan lebar 390/768/1440 piksel. Atur `BASE_URL` untuk port lain dan `SHOTS` untuk menyimpan tangkapan layar.
+
 > **Status 18 Oktober 2026 (tahap 2).** Model registrasi pemilik sudah dibangun: tanggal layanan hanya H+1 (Asia/Jakarta, ditetapkan sistem, tanpa pemilih tanggal), form pasien mulai kosong, satu pendaftaran per akun per tanggal layanan, satu pendaftaran belum selesai per akun, NIK ganda pada tanggal yang sama ditolak, status "Menunggu pembayaran" dengan kode pendaftaran (bukan nomor antrian), daftar tunggu FIFO 50 di belakang 100 tempat utama. Pembayaran **tidak** dibangun. Semua label simulasi/demo/mockup/use case/nomor Q dihapus dari kode sumber (bukan disembunyikan); saklar `NEXT_PUBLIC_DEMO_LABELS` dan `src/lib/demo.ts` sudah dihapus. Status keputusan: [OPEN_DECISIONS.md](../docs/system-design/OPEN_DECISIONS.md) bagian 10.
 
 ## Dua jalur registrasi
