@@ -1,0 +1,50 @@
+flowchart TB
+    %% Jeda dua jam berasal dari diskusi tim; waktu acuannya perlu disahkan oleh SOP laboratorium.
+    %% Lab tahap 2 dapat dijadwalkan setelah waktu layak, tanpa menahan pasien di unit lab.
+
+    START([Pasien mendapat pemeriksaan lab dua tahap])
+    S1["SISTEM<br/>Prioritaskan kesempatan lab tahap 1<br/>agar jeda dapat dimulai lebih awal"]
+    O1["PETUGAS / DOKTER LAB<br/>Check-in dan konfirmasi kesiapan unit"]
+    P1["PASIEN<br/>Masuk lab tahap 1"]
+    O2["PETUGAS / DOKTER LAB<br/>Verifikasi identitas, permintaan,<br/>dan prasyarat pemeriksaan"]
+    D1{"Prasyarat terpenuhi?"}
+    X1["PETUGAS LAB<br/>Tunda dan ikuti prosedur klinis RS"]
+    HOLD([Menunggu tindak lanjut])
+
+    O3["PETUGAS / DOKTER LAB<br/>Lakukan pemeriksaan tahap 1"]
+    S2["SISTEM<br/>Catat data tahap 1 dan waktu acuan<br/>jeda sesuai SOP laboratorium"]
+    S3["SISTEM<br/>Set lab tahap 2 layak setelah<br/>jeda 120 menit"]
+    P2["PASIEN<br/>Keluar dari lab"]
+    S4["SISTEM<br/>Tawarkan pemeriksaan lain yang layak<br/>selama masa tunggu"]
+    D2{"Waktu lab tahap 2<br/>sudah layak?"}
+    WAIT["SISTEM<br/>Pantau waktu dan selesaikan<br/>pemeriksaan lain yang layak"]
+
+    S5["SISTEM<br/>Masukkan lab tahap 2 sebagai<br/>kandidat penjadwalan"]
+    P3["PASIEN<br/>Dipanggil dan masuk lab tahap 2"]
+    O4["PETUGAS / DOKTER LAB<br/>Verifikasi ulang identitas dan<br/>lakukan pemeriksaan tahap 2"]
+    S6["SISTEM<br/>Catat waktu selesai tahap 2"]
+    P4["PASIEN<br/>Keluar dari lab"]
+    O5["PETUGAS / DOKTER LAB<br/>Lengkapi data kedua tahap dan<br/>lampiran hasil"]
+    O6["DOKTER PEMERIKSA LAB<br/>Submit hasil dan tentukan<br/>honorarium sendiri"]
+    S7["SISTEM<br/>Kirim hasil untuk verifikasi medis;<br/>kirim komponen biaya ke keuangan"]
+    END([Pemeriksaan lab selesai])
+
+    START --> S1 --> O1 --> P1 --> O2 --> D1
+    D1 -- Tidak --> X1 --> HOLD
+    D1 -- Ya --> O3 --> S2 --> S3 --> P2 --> S4 --> D2
+    D2 -- Belum --> WAIT --> D2
+    D2 -- Sudah --> S5 --> P3 --> O4 --> S6 --> P4 --> O5 --> O6 --> S7 --> END
+
+    classDef terminal fill:#172033,color:#FFFFFF,stroke:#172033,stroke-width:2px;
+    classDef patient fill:#EAF7EE,color:#173B23,stroke:#3B8A57,stroke-width:1.5px;
+    classDef clinician fill:#F3EDFC,color:#362060,stroke:#7A5AAF,stroke-width:1.5px;
+    classDef system fill:#E8F1FB,color:#172033,stroke:#4976A8,stroke-width:1.5px;
+    classDef decision fill:#FFF5DB,color:#172033,stroke:#C58B16,stroke-width:2px;
+    classDef exception fill:#FDECEC,color:#5E1C1C,stroke:#C75454,stroke-width:1.5px;
+
+    class START,HOLD,END terminal;
+    class P1,P2,P3,P4 patient;
+    class O1,O2,O3,O4,O5,O6 clinician;
+    class S1,S2,S3,S4,S5,S6,S7,WAIT system;
+    class D1,D2 decision;
+    class X1 exception;

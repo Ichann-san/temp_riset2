@@ -1,0 +1,38 @@
+flowchart TB
+    %% Honorarium merupakan komponen biaya internal; tagihan pasien ditetapkan terpisah oleh RS.
+    %% Hanya dokter pemeriksa boleh mengurangi honorariumnya sendiri.
+
+    START([Pemeriksaan unit selesai])
+    S1["SISTEM<br/>Siapkan komponen terpisah:<br/>honor pemeriksa, honor verifikator,<br/>dan biaya lainnya"]
+    S2["SISTEM<br/>Isi komponen dengan nilai normal<br/>sesuai tarif RS"]
+    O1["DOKTER PEMERIKSA<br/>Tinjau honorarium sendiri"]
+    D1{"Honorarium pemeriksa<br/>tetap penuh?"}
+    O2["DOKTER PEMERIKSA<br/>Masukkan nilai honorarium baru<br/>dan alasan pengurangan"]
+    D2{"Nilai baru Rp0 sampai<br/>nilai normal dan alasan terisi?"}
+    X1["SISTEM<br/>Tolak perubahan dan tampilkan<br/>kesalahan untuk diperbaiki"]
+    S3["SISTEM<br/>Simpan nilai akhir dan audit:<br/>dokter, waktu, nilai lama, nilai baru, alasan"]
+    S4["SISTEM<br/>Catat honor tiap verifikator yang<br/>selesai bertugas pada nilai normal;<br/>biaya lainnya tetap normal"]
+    S5["SISTEM<br/>Kirim rincian komponen biaya<br/>ke proses keuangan RS"]
+    F1["BAGIAN KEUANGAN<br/>Tentukan proses pembayaran/tagihan<br/>sesuai kebijakan RS"]
+    END([Pencatatan biaya selesai])
+
+    START --> S1 --> S2 --> O1 --> D1
+    D1 -- Ya --> S4
+    D1 -- Tidak --> O2 --> D2
+    D2 -- Tidak --> X1 --> O2
+    D2 -- Ya --> S3 --> S4
+    S4 --> S5 --> F1 --> END
+
+    classDef terminal fill:#172033,color:#FFFFFF,stroke:#172033,stroke-width:2px;
+    classDef clinician fill:#EAF7EE,color:#173B23,stroke:#3B8A57,stroke-width:1.5px;
+    classDef system fill:#E8F1FB,color:#172033,stroke:#4976A8,stroke-width:1.5px;
+    classDef finance fill:#F3EDFC,color:#362060,stroke:#7A5AAF,stroke-width:1.5px;
+    classDef decision fill:#FFF5DB,color:#172033,stroke:#C58B16,stroke-width:2px;
+    classDef exception fill:#FDECEC,color:#5E1C1C,stroke:#C75454,stroke-width:1.5px;
+
+    class START,END terminal;
+    class O1,O2 clinician;
+    class S1,S2,S3,S4,S5 system;
+    class F1 finance;
+    class D1,D2 decision;
+    class X1 exception;

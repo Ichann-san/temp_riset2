@@ -1,0 +1,72 @@
+flowchart TB
+    %% Overview ringkas. Layout vertikal untuk impor app.diagram.net.
+    %% Hijau = pengguna, biru = sistem, ungu = kuota, kuning = keputusan.
+
+    START([Mulai pendaftaran MCU])
+    TYPE{"Jenis pendaftaran?"}
+
+    I1["INDIVIDUAL<br/>Hanya dibuka H-1"]
+    I2["Pilih satu peserta:<br/>diri sendiri atau orang lain"]
+    I3["Pilih paket dan set pemeriksaan"]
+    IQ{"Kuota individual tersedia?"}
+    IHOLD["SISTEM<br/>Tahan satu slot selama 2 menit"]
+    IFULL([Kuota individual penuh])
+
+    K1["KOLEKTIF<br/>Pilih tanggal utama"]
+    K2["Unggah satu batch dengan paket<br/>dan set pemeriksaan yang sama"]
+    K3["SISTEM<br/>Validasi file dan urutkan FIFO"]
+    K4["KUOTA<br/>Alokasi 60, fleksibel sampai 66"]
+    K5{"Peserta melebihi kapasitas<br/>tanggal utama?"}
+    K6["SISTEM<br/>Usulkan tanggal berikutnya"]
+    K7{"Klien menyetujui<br/>pembagian tanggal?"}
+    KSTOP([Revisi atau batalkan])
+
+    CHECK{"Validasi akhir berhasil dan<br/>total harian tidak melebihi 100?"}
+    CONFIRM["SISTEM<br/>Buat booking tanpa pembayaran"]
+    CODE["SISTEM<br/>Terbitkan kode booking"]
+    FAILED([Booking gagal])
+    SUCCESS([Booking berhasil])
+
+    R1["KUOTA H-1<br/>Buka sisa kuota kolektif<br/>untuk individual"]
+    R2["KUOTA H-1<br/>Setelah individual ditutup,<br/>hitung sisa kuota individual"]
+    R3{"Masih ada sisa kuota?"}
+    R4["SISTEM<br/>Tawarkan ke klien kolektif<br/>menurut FIFO"]
+    R5{"Klien menerima?"}
+    R6["SISTEM<br/>Tambahkan peserta tanpa<br/>melewati total 100"]
+    R7["SISTEM<br/>Tawarkan ke klien berikutnya"]
+    END([Tutup kuota hari tersebut])
+
+    START --> TYPE
+    TYPE -- Individual --> I1 --> I2 --> I3 --> IQ
+    IQ -- Tidak --> IFULL
+    IQ -- Ya --> IHOLD --> CHECK
+
+    TYPE -- Kolektif --> K1 --> K2 --> K3 --> K4 --> K5
+    K5 -- Tidak --> K7
+    K5 -- Ya --> K6 --> K7
+    K7 -- Tidak --> KSTOP
+    K7 -- Ya --> CHECK
+
+    CHECK -- Tidak --> FAILED
+    CHECK -- Ya --> CONFIRM --> CODE --> SUCCESS
+
+    SUCCESS -. Aturan redistribusi H-1 .-> R1
+    R1 --> R2 --> R3
+    R3 -- Tidak --> END
+    R3 -- Ya --> R4 --> R5
+    R5 -- Ya --> R6 --> R3
+    R5 -- Tidak atau kedaluwarsa --> R7 --> R4
+
+    classDef startEnd fill:#172033,color:#FFFFFF,stroke:#172033,stroke-width:2px;
+    classDef user fill:#EAF7EE,color:#173B23,stroke:#3B8A57,stroke-width:1.5px;
+    classDef system fill:#E8F1FB,color:#172033,stroke:#4976A8,stroke-width:1.5px;
+    classDef quota fill:#F3EDFC,color:#362060,stroke:#7A5AAF,stroke-width:1.5px;
+    classDef decision fill:#FFF5DB,color:#172033,stroke:#C58B16,stroke-width:2px;
+    classDef warning fill:#FDECEC,color:#5E1C1C,stroke:#C75454,stroke-width:1.5px;
+
+    class START,IFULL,KSTOP,SUCCESS,END startEnd;
+    class I1,I2,I3,K1,K2 user;
+    class IHOLD,K3,K6,CONFIRM,CODE,R4,R6,R7 system;
+    class K4,R1,R2 quota;
+    class TYPE,IQ,K5,K7,CHECK,R3,R5 decision;
+    class FAILED warning;

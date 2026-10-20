@@ -1,0 +1,76 @@
+flowchart TB
+    %% Layout dibuat vertikal agar stabil saat diimpor ke app.diagram.net.
+    %% Hijau = klien, biru = sistem, ungu = kuota, kuning = keputusan.
+
+    START([Mulai])
+    C1["KLIEN<br/>Pilih tanggal pemeriksaan utama"]
+    C2["KLIEN<br/>Pilih satu paket dan set pemeriksaan<br/>untuk seluruh peserta batch"]
+    C3["KLIEN<br/>Unggah file CSV atau XLSX"]
+    S1["SISTEM<br/>Validasi format, kolom wajib,<br/>nilai kosong, format data, dan duplikasi"]
+    D1{"Semua data valid?"}
+    X1["SISTEM<br/>Tampilkan baris bermasalah<br/>beserta alasannya"]
+    C4["KLIEN<br/>Perbaiki data dan unggah ulang"]
+    S2["SISTEM<br/>Bentuk daftar peserta sementara"]
+    C5["KLIEN<br/>Periksa dan konfirmasi data peserta"]
+
+    S3["SISTEM<br/>Catat waktu permintaan<br/>sebagai urutan FIFO"]
+    Q1["KUOTA<br/>Periksa kapasitas tanggal utama:<br/>60 kolektif, fleksibel sampai 66"]
+    D2{"Semua peserta mendapat<br/>tanggal utama?"}
+    S4["SISTEM<br/>Usulkan tanggal berikutnya<br/>untuk peserta yang tersisa"]
+    C6["KLIEN<br/>Periksa pembagian tanggal"]
+    D3{"Klien menyetujui<br/>pembagian tanggal?"}
+    REVISE([Revisi tanggal utama dan ulangi])
+    CANCEL([Pendaftaran dibatalkan])
+
+    S5["SISTEM<br/>Periksa ulang seluruh kuota"]
+    D4{"Kuota masih tersedia?"}
+    S6["SISTEM<br/>Susun ulang usulan tanggal"]
+    S7["SISTEM<br/>Buat booking batch secara atomik<br/>tanpa pembayaran"]
+    S8["SISTEM<br/>Terbitkan nomor batch, jadwal,<br/>dan kode booking peserta"]
+    BOOKED([Booking kolektif berhasil])
+
+    Q2["KUOTA H-1<br/>Evaluasi sisa kuota individual<br/>pada batas waktu kebijakan RS"]
+    D5{"Ada sisa kuota<br/>individual?"}
+    S9["SISTEM<br/>Pilih klien berikutnya<br/>berdasarkan FIFO"]
+    D6{"Ada peserta yang dapat<br/>ditawarkan kuota tambahan?"}
+    S10["SISTEM<br/>Kirim notifikasi penawaran"]
+    D7{"KLIEN<br/>Setujui penambahan atau<br/>percepatan peserta?"}
+    S11["SISTEM<br/>Pindahkan peserta, perbarui jadwal,<br/>dan kirim notifikasi"]
+    S12["SISTEM<br/>Lanjut ke klien FIFO berikutnya"]
+    END([Tutup kuota hari tersebut])
+
+    START --> C1 --> C2 --> C3 --> S1 --> D1
+    D1 -- Tidak --> X1 --> C4 --> C3
+    D1 -- Ya --> S2 --> C5 --> S3 --> Q1 --> D2
+
+    D2 -- Ya --> C6
+    D2 -- Tidak --> S4 --> C6
+    C6 --> D3
+    D3 -- Revisi --> REVISE
+    D3 -- Batalkan --> CANCEL
+    D3 -- Setuju --> S5 --> D4
+    D4 -- Tidak --> S6 --> C6
+    D4 -- Ya --> S7 --> S8 --> BOOKED
+
+    BOOKED -. Menunggu evaluasi H-1 .-> Q2
+    Q2 --> D5
+    D5 -- Tidak --> END
+    D5 -- Ya --> S9 --> D6
+    D6 -- Tidak --> END
+    D6 -- Ya --> S10 --> D7
+    D7 -- Ya --> S11 --> Q2
+    D7 -- Tidak atau kedaluwarsa --> S12 --> S9
+
+    classDef startEnd fill:#172033,color:#FFFFFF,stroke:#172033,stroke-width:2px;
+    classDef client fill:#EAF7EE,color:#173B23,stroke:#3B8A57,stroke-width:1.5px;
+    classDef system fill:#E8F1FB,color:#172033,stroke:#4976A8,stroke-width:1.5px;
+    classDef quota fill:#F3EDFC,color:#362060,stroke:#7A5AAF,stroke-width:1.5px;
+    classDef decision fill:#FFF5DB,color:#172033,stroke:#C58B16,stroke-width:2px;
+    classDef warning fill:#FDECEC,color:#5E1C1C,stroke:#C75454,stroke-width:1.5px;
+
+    class START,BOOKED,END,REVISE startEnd;
+    class C1,C2,C3,C4,C5,C6 client;
+    class S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11,S12 system;
+    class Q1,Q2 quota;
+    class D1,D2,D3,D4,D5,D6,D7 decision;
+    class X1,CANCEL warning;

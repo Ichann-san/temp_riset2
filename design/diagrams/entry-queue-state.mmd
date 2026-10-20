@@ -1,0 +1,48 @@
+flowchart TB
+    %% State machine antrean masuk. Layout vertikal untuk app.diagram.net.
+
+    START([Mulai])
+    BOOKED["BOOKED<br/>Slot pemeriksaan sudah dibooking"]
+    D1{"Daftar ulang valid?"}
+    REVIEW["MANUAL_REVIEW<br/>Perlu bantuan petugas"]
+    CANCELLED([CANCELLED / tidak dapat check-in])
+
+    REGISTERED["RE_REGISTERED<br/>Daftar ulang berhasil"]
+    WAIT_ENTRY["WAITING_FOR_ENTRY<br/>Nomor antrean sudah diterbitkan,<br/>tetapi belum aktif"]
+    D2{"Scan QR valid?"}
+    ACTIVE["ACTIVE_WAITING<br/>Berada di ruang tunggu dan<br/>masuk urutan FIFO"]
+
+    D3{"Tetap berada<br/>di ruang tunggu?"}
+    TEMP_EXIT["TEMPORARY_EXIT<br/>Tidak dapat dipanggil"]
+    REQUEUED["REQUEUED<br/>Ditempatkan di urutan terakhir"]
+
+    CALLED["CALLED<br/>Nomor sedang dipanggil"]
+    D4{"Hadir dalam batas<br/>waktu panggilan?"}
+    MISSED["MISSED_CALL<br/>Panggilan terlewat"]
+    READY["READY_FOR_MCU<br/>Keluar dari antrean masuk"]
+    END([Masuk sistem penjadwalan pemeriksaan])
+
+    START --> BOOKED --> D1
+    D1 -- Tidak --> REVIEW --> CANCELLED
+    D1 -- Ya --> REGISTERED --> WAIT_ENTRY --> D2
+    D2 -- Tidak --> REVIEW
+    D2 -- Ya --> ACTIVE --> D3
+
+    D3 -- Keluar --> TEMP_EXIT --> REQUEUED --> ACTIVE
+    D3 -- Tetap menunggu --> CALLED --> D4
+    D4 -- Tidak --> MISSED --> REQUEUED
+    D4 -- Ya --> READY --> END
+
+    classDef startEnd fill:#172033,color:#FFFFFF,stroke:#172033,stroke-width:2px;
+    classDef booked fill:#E8F1FB,color:#172033,stroke:#4976A8,stroke-width:1.5px;
+    classDef waiting fill:#FFF5DB,color:#4D3500,stroke:#C58B16,stroke-width:1.5px;
+    classDef active fill:#EAF7EE,color:#173B23,stroke:#3B8A57,stroke-width:2px;
+    classDef exception fill:#FDECEC,color:#5E1C1C,stroke:#C75454,stroke-width:1.5px;
+    classDef decision fill:#FFF8E7,color:#172033,stroke:#C58B16,stroke-width:2px;
+
+    class START,CANCELLED,END startEnd;
+    class BOOKED,REGISTERED,READY booked;
+    class WAIT_ENTRY,REQUEUED,CALLED waiting;
+    class ACTIVE active;
+    class REVIEW,TEMP_EXIT,MISSED exception;
+    class D1,D2,D3,D4 decision;

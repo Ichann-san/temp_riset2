@@ -1,0 +1,69 @@
+flowchart TB
+    %% Layout dibuat vertikal agar stabil saat diimpor ke app.diagram.net.
+    %% Hijau = pasien, biru = sistem, kuning = keputusan, merah = gagal.
+
+    START([Mulai])
+    P1["PASIEN<br/>Buka menu Daftar MCU"]
+    S1["SISTEM<br/>Tetapkan tanggal pemeriksaan otomatis:<br/>hari berikutnya sesuai aturan H-1"]
+    D1{"Pendaftaran H-1<br/>masih dibuka?"}
+    X1["SISTEM<br/>Tampilkan pendaftaran belum dibuka<br/>atau sudah ditutup"]
+    D2{"Kuota individual<br/>tersedia?"}
+    X2["SISTEM<br/>Tampilkan kuota penuh"]
+
+    D3{"PASIEN<br/>Daftarkan siapa?<br/>Satu booking hanya satu peserta"}
+    S2["SISTEM<br/>Ambil profil akun MCU atau SIMRS<br/>Integrasi SIMRS masih TBD"]
+    P2["PASIEN<br/>Periksa profil dan ubah<br/>bagian yang diizinkan"]
+    P3["PASIEN<br/>Isi data peserta lain"]
+    D4{"SISTEM<br/>Data valid dan lengkap?"}
+    P4["PASIEN<br/>Perbaiki data"]
+
+    P5["PASIEN<br/>Pilih paket MCU"]
+    D5{"Paket Reguler?"}
+    S3["SISTEM<br/>Ambil set pemeriksaan tetap<br/>Paket Haji atau CPNS"]
+    P6["PASIEN<br/>Pilih pemeriksaan reguler"]
+    D6{"SISTEM<br/>Pilihan pemeriksaan valid?"}
+    S4["SISTEM<br/>Bentuk set pemeriksaan pasien<br/>tanpa menentukan urutan"]
+
+    P7["PASIEN<br/>Periksa ringkasan data, paket,<br/>pemeriksaan, dan tanggal"]
+    P8["PASIEN<br/>Setujui kebenaran data dan<br/>ketentuan penggunaan data"]
+    S5["SISTEM<br/>Tahan satu slot selama 2 menit<br/>dan tampilkan penghitung waktu"]
+    P9["PASIEN<br/>Klik Konfirmasi Booking"]
+    D7{"SISTEM<br/>Timer aktif dan kuota<br/>masih tersedia?"}
+    X3["SISTEM<br/>Lepaskan slot dan nyatakan<br/>booking kedaluwarsa"]
+    RESTART([Kembali ke halaman awal])
+    S6["SISTEM<br/>Buat booking secara atomik,<br/>kurangi kuota satu, tanpa pembayaran"]
+    S7["SISTEM<br/>Terbitkan kode booking"]
+    END_OK([Booking berhasil])
+    END_STOP([Selesai])
+
+    START --> P1 --> S1 --> D1
+    D1 -- Tidak --> X1 --> END_STOP
+    D1 -- Ya --> D2
+    D2 -- Tidak --> X2 --> END_STOP
+    D2 -- Ya --> D3
+
+    D3 -- Diri sendiri --> S2 --> P2 --> D4
+    D3 -- Orang lain --> P3 --> D4
+    D4 -- Tidak --> P4 --> D4
+    D4 -- Ya --> P5 --> D5
+
+    D5 -- Tidak --> S3 --> S4
+    D5 -- Ya --> P6 --> D6
+    D6 -- Tidak --> P6
+    D6 -- Ya --> S4
+
+    S4 --> P7 --> P8 --> S5 --> P9 --> D7
+    D7 -- Tidak --> X3 --> RESTART
+    D7 -- Ya --> S6 --> S7 --> END_OK
+
+    classDef startEnd fill:#172033,color:#FFFFFF,stroke:#172033,stroke-width:2px;
+    classDef patient fill:#EAF7EE,color:#173B23,stroke:#3B8A57,stroke-width:1.5px;
+    classDef system fill:#E8F1FB,color:#172033,stroke:#4976A8,stroke-width:1.5px;
+    classDef decision fill:#FFF5DB,color:#172033,stroke:#C58B16,stroke-width:2px;
+    classDef warning fill:#FDECEC,color:#5E1C1C,stroke:#C75454,stroke-width:1.5px;
+
+    class START,END_OK,END_STOP,RESTART startEnd;
+    class P1,P2,P3,P4,P5,P6,P7,P8,P9 patient;
+    class S1,S2,S3,S4,S5,S6,S7 system;
+    class D1,D2,D3,D4,D5,D6,D7 decision;
+    class X1,X2,X3 warning;

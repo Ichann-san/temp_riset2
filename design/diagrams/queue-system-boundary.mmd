@@ -1,0 +1,42 @@
+flowchart TB
+    %% Batas tanggung jawab tiga sistem. Layout vertikal untuk app.diagram.net.
+
+    A1["TAHAP 1 — PENDAFTARAN<br/>Individual H-1 atau kolektif"]
+    A2["SISTEM PENDAFTARAN<br/>Validasi peserta, paket, pemeriksaan,<br/>tanggal, dan kuota harian"]
+    OUT1["OUTPUT<br/>Kode booking<br/>Belum menjadi nomor antrean"]
+
+    B1["TAHAP 2 — ANTREAN MASUK MCU<br/>Dimulai saat peserta tiba"]
+    B2["DAFTAR ULANG<br/>Validasi booking dan identitas"]
+    B3["AKTIVASI ANTREAN<br/>Terbitkan nomor lalu aktifkan<br/>setelah scan QR ruang tunggu"]
+    B4["FIFO RUANG TUNGGU<br/>Panggil peserta aktif;<br/>panggilan terlewat pindah ke belakang"]
+    OUT2["OUTPUT<br/>Status READY_FOR_MCU"]
+
+    C1["TAHAP 3 — ANTREAN PEMERIKSAAN<br/>Baru dimulai setelah peserta dipanggil"]
+    C2["DATA HANDOFF<br/>visit_id, patient_id, examination_set,<br/>ready_at, priority, dan constraints"]
+    C3["DYNAMIC SCHEDULER<br/>Pilih unit berikutnya berdasarkan<br/>constraint, waktu tunggu, dan kapasitas"]
+    C4["ANTREAN UNIT PEMERIKSAAN<br/>Lab, radiologi, pemeriksaan fisik,<br/>narkoba, dan unit lain"]
+    D1{"Semua pemeriksaan selesai?"}
+    C5["Hitung tujuan pemeriksaan berikutnya"]
+    END([Verifikasi akhir MCU setelah<br/>seluruh hasil unit disetujui])
+
+    A1 --> A2 --> OUT1
+    OUT1 -- Peserta datang sesuai jadwal --> B1
+    B1 --> B2 --> B3 --> B4 --> OUT2
+    OUT2 -- Hanya peserta READY_FOR_MCU --> C1
+    C1 --> C2 --> C3 --> C4 --> D1
+    D1 -- Tidak --> C5 --> C3
+    D1 -- Ya --> END
+
+    classDef stage fill:#172033,color:#FFFFFF,stroke:#172033,stroke-width:2px;
+    classDef registration fill:#EAF7EE,color:#173B23,stroke:#3B8A57,stroke-width:1.5px;
+    classDef entry fill:#E8F1FB,color:#172033,stroke:#4976A8,stroke-width:1.5px;
+    classDef examination fill:#F3EDFC,color:#362060,stroke:#7A5AAF,stroke-width:1.5px;
+    classDef output fill:#FFF5DB,color:#4D3500,stroke:#C58B16,stroke-width:2px;
+    classDef decision fill:#FFF8E7,color:#172033,stroke:#C58B16,stroke-width:2px;
+
+    class A1,B1,C1,END stage;
+    class A2 registration;
+    class B2,B3,B4 entry;
+    class C2,C3,C4,C5 examination;
+    class OUT1,OUT2 output;
+    class D1 decision;

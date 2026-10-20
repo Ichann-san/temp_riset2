@@ -1,0 +1,50 @@
+flowchart TB
+    %% Ringkasan satu perjalanan pasien. Tanpa swimlane; detail ada di diagram per tahap.
+    %% Pendaftaran gratis. Honorarium adalah komponen biaya internal, bukan status pembayaran pasien.
+    %% Hanya dokter pemeriksa boleh mengurangi honorariumnya; honor verifikator tetap normal.
+    %% Titik awal jeda lab 120 menit mengikuti SOP klinis RS yang masih perlu dikonfirmasi.
+    %% Verifikasi hasil unit dapat berjalan saat pasien menjalani pemeriksaan lain.
+
+    START([Mulai])
+    BOOK["Booking gratis: individual H-1 / kolektif<br/>Kuota total 100 pasien per hari"]
+    D1{"Data, paket, tanggal,<br/>dan kuota valid?"}
+    BOOK_FAIL([Perbaiki booking])
+
+    CHECKIN["Daftar ulang, validasi identitas,<br/>terbitkan nomor, lalu scan QR"]
+    D2{"Booking, identitas,<br/>dan QR valid?"}
+    HELP([Petugas tangani check-in])
+    FIFO["Antre FIFO sejak scan QR<br/>dan tunggu panggilan"]
+    D3{"Hadir saat dipanggil?"}
+    LAST["Pindah ke urutan terakhir"]
+
+    PLAN["Muat daftar pemeriksaan<br/>sesuai paket dan pilihan"]
+    D4{"Semua pemeriksaan<br/>selesai?"}
+    ROUTE["Pilih unit yang layak dan tersedia;<br/>tunggu jika belum ada"]
+    EXAM["Lakukan pemeriksaan<br/>dan simpan data hasil"]
+    D5{"Lab tahap pertama?"}
+    LAB["Jadwalkan lab tahap kedua<br/>setelah jeda 120 menit"]
+    SUBMIT["Submit hasil unit<br/>Catat honor pemeriksa dan biaya lain"]
+
+    VERIFY["Verifikasi hasil tiap unit<br/>Honor verifikator tetap normal"]
+    FINAL["Dokter MCU memverifikasi<br/>hasil gabungan"]
+    RESULT([Terbitkan hasil MCU])
+
+    START --> BOOK --> D1
+    D1 -- Tidak --> BOOK_FAIL
+    D1 -- Ya --> CHECKIN --> D2
+    D2 -- Tidak --> HELP
+    D2 -- Ya --> FIFO --> D3
+    D3 -- Tidak --> LAST --> FIFO
+    D3 -- Ya --> PLAN --> D4
+
+    D4 -- Tidak --> ROUTE --> EXAM --> D5
+    D5 -- Ya --> LAB --> D4
+    D5 -- Tidak --> SUBMIT --> D4
+    D4 -- Ya --> VERIFY --> FINAL --> RESULT
+
+    classDef terminal fill:#1F2937,color:#FFFFFF,stroke:#1F2937,stroke-width:2px;
+    classDef process fill:#F3F6FA,color:#172033,stroke:#718096,stroke-width:1.5px;
+    classDef decision fill:#FFF4D6,color:#352800,stroke:#B7791F,stroke-width:2px;
+    class START,BOOK_FAIL,HELP,RESULT terminal;
+    class BOOK,CHECKIN,FIFO,LAST,PLAN,ROUTE,EXAM,LAB,SUBMIT,VERIFY,FINAL process;
+    class D1,D2,D3,D4,D5 decision;

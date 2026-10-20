@@ -1,0 +1,62 @@
+flowchart TB
+    %% Layout vertikal untuk impor app.diagram.net.
+    %% Hijau = peserta, biru = sistem, ungu = petugas, kuning = keputusan.
+    %% Durasi batas respons panggilan mengikuti kebijakan rumah sakit.
+
+    START([Peserta tiba di Divisi MCU])
+    P1["PESERTA<br/>Tunjukkan kode booking dan identitas"]
+    O1["PETUGAS<br/>Lakukan daftar ulang"]
+    S1["SISTEM<br/>Validasi booking hari ini, identitas,<br/>dan status check-in"]
+    D1{"Booking valid?"}
+    X1["PETUGAS<br/>Tangani melalui pemeriksaan manual"]
+    STOP1([Daftar ulang belum berhasil])
+
+    S2["SISTEM<br/>Terbitkan nomor antrean masuk<br/>Status: WAITING_FOR_ENTRY"]
+    P2["PESERTA<br/>Pindai QR di pintu ruang tunggu"]
+    S3["SISTEM<br/>Validasi QR, identitas booking,<br/>dan penggunaan tunggal"]
+    D2{"QR valid?"}
+    X2["SISTEM<br/>Tolak akses dan tampilkan alasan"]
+    O2["PETUGAS<br/>Bantu peserta jika diperlukan"]
+
+    S4["SISTEM<br/>Catat waktu masuk dan aktifkan tiket<br/>Status: ACTIVE_WAITING"]
+    Q1["ANTREAN<br/>Masukkan peserta ke FIFO<br/>berdasarkan waktu scan QR"]
+    WAIT["PESERTA<br/>Menunggu di ruang tunggu"]
+    D3{"Peserta tetap berada<br/>di ruang tunggu?"}
+    X3["SISTEM<br/>Nonaktifkan tiket sementara<br/>Status: TEMPORARY_EXIT"]
+    O3["PETUGAS<br/>Izinkan masuk kembali dan<br/>tempatkan di urutan terakhir"]
+
+    S5["SISTEM<br/>Panggil nomor antrean"]
+    D4{"Peserta hadir dalam<br/>batas waktu panggilan?"}
+    S6["SISTEM<br/>Catat MISSED_CALL dan ubah<br/>waktu urutan menjadi waktu saat ini"]
+    Q2["ANTREAN<br/>Pindahkan peserta ke urutan terakhir"]
+
+    S7["SISTEM<br/>Hapus dari antrean masuk<br/>Status: READY_FOR_MCU"]
+    O4["PETUGAS<br/>Arahkan peserta ke proses MCU"]
+    HANDOFF([Aktifkan sistem penjadwalan pemeriksaan])
+
+    START --> P1 --> O1 --> S1 --> D1
+    D1 -- Tidak --> X1 --> STOP1
+    D1 -- Ya --> S2 --> P2 --> S3 --> D2
+    D2 -- Tidak --> X2 --> O2 --> STOP1
+    D2 -- Ya --> S4 --> Q1 --> WAIT --> D3
+
+    D3 -- Tidak --> X3 --> O3 --> Q2
+    D3 -- Ya --> S5 --> D4
+    D4 -- Tidak --> S6 --> Q2 --> WAIT
+    D4 -- Ya --> S7 --> O4 --> HANDOFF
+
+    classDef startEnd fill:#172033,color:#FFFFFF,stroke:#172033,stroke-width:2px;
+    classDef participant fill:#EAF7EE,color:#173B23,stroke:#3B8A57,stroke-width:1.5px;
+    classDef system fill:#E8F1FB,color:#172033,stroke:#4976A8,stroke-width:1.5px;
+    classDef operator fill:#F3EDFC,color:#362060,stroke:#7A5AAF,stroke-width:1.5px;
+    classDef queue fill:#EAF3FF,color:#17365D,stroke:#3973AC,stroke-width:2px;
+    classDef decision fill:#FFF5DB,color:#172033,stroke:#C58B16,stroke-width:2px;
+    classDef warning fill:#FDECEC,color:#5E1C1C,stroke:#C75454,stroke-width:1.5px;
+
+    class START,STOP1,HANDOFF startEnd;
+    class P1,P2,WAIT participant;
+    class S1,S2,S3,S4,S5,S6,S7 system;
+    class O1,O2,O3,O4 operator;
+    class Q1,Q2 queue;
+    class D1,D2,D3,D4 decision;
+    class X1,X2,X3 warning;

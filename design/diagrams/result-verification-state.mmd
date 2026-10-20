@@ -1,0 +1,57 @@
+flowchart TB
+    %% Jumlah dan urutan dokter verifikator mengikuti SOP RS; belum ditetapkan.
+    %% Hasil tidak dikirim ke pasien sebelum verifikasi akhir MCU.
+
+    START([Pemeriksaan unit selesai])
+    DRAFT["DRAFT<br/>Dokter pemeriksa mengisi hasil<br/>dan lampiran"]
+    D1{"Data wajib lengkap?"}
+    FIX["DOKTER PEMERIKSA<br/>Lengkapi data draf"]
+    SUBMITTED["SUBMITTED<br/>Dokter pemeriksa mengirim hasil"]
+    S1["SISTEM<br/>Simpan versi, waktu, dan identitas<br/>dokter pemeriksa"]
+    ASSIGN["SISTEM<br/>Tentukan dokter verifikator<br/>sesuai SOP RS"]
+    REVIEW["IN_VERIFICATION<br/>Dokter verifikator menilai hasil"]
+    D2{"Hasil dapat disetujui?"}
+
+    REVISE["REVISION_REQUIRED<br/>Catat alasan dan kirim kembali<br/>ke dokter pemeriksa"]
+    D3{"Perlu pasien diperiksa ulang?"}
+    REEXAM["RE_EXAM_REQUESTED<br/>Buat permintaan pemeriksaan ulang<br/>dan masukkan ke penjadwalan unit"]
+    UPDATE["DOKTER PEMERIKSA<br/>Perbaiki data; simpan sebagai<br/>versi baru"]
+
+    APPROVED["VERIFIER_APPROVED<br/>Catat identitas dan waktu persetujuan"]
+    D4{"Masih ada verifikator<br/>yang diwajibkan SOP RS?"}
+    UNIT_OK["UNIT_VERIFIED<br/>Hasil unit siap untuk MCU terpusat"]
+    D5{"Semua hasil pemeriksaan<br/>pasien sudah diverifikasi?"}
+    WAIT["SISTEM<br/>Tunggu hasil unit lain"]
+    MCU["DOKTER MCU<br/>Lakukan verifikasi akhir<br/>hasil gabungan"]
+    D6{"Hasil gabungan disetujui?"}
+    RETURN["DOKTER MCU<br/>Kembalikan hasil unit terkait<br/>dengan alasan revisi"]
+    FINAL["FINAL_VERIFIED<br/>Hasil MCU disahkan"]
+    END([Hasil siap mengikuti aturan penerbitan RS])
+
+    START --> DRAFT --> D1
+    D1 -- Tidak --> FIX --> D1
+    D1 -- Ya --> SUBMITTED --> S1 --> ASSIGN --> REVIEW --> D2
+    D2 -- Tidak --> REVISE --> D3
+    D3 -- Ya --> REEXAM --> DRAFT
+    D3 -- Tidak --> UPDATE --> SUBMITTED
+    D2 -- Ya --> APPROVED --> D4
+    D4 -- Ya --> ASSIGN
+    D4 -- Tidak --> UNIT_OK --> D5
+    D5 -- Tidak --> WAIT --> D5
+    D5 -- Ya --> MCU --> D6
+    D6 -- Tidak --> RETURN --> REVISE
+    D6 -- Ya --> FINAL --> END
+
+    classDef terminal fill:#172033,color:#FFFFFF,stroke:#172033,stroke-width:2px;
+    classDef draft fill:#E8F1FB,color:#172033,stroke:#4976A8,stroke-width:1.5px;
+    classDef review fill:#F3EDFC,color:#362060,stroke:#7A5AAF,stroke-width:1.5px;
+    classDef approved fill:#EAF7EE,color:#173B23,stroke:#3B8A57,stroke-width:2px;
+    classDef decision fill:#FFF5DB,color:#172033,stroke:#C58B16,stroke-width:2px;
+    classDef exception fill:#FDECEC,color:#5E1C1C,stroke:#C75454,stroke-width:1.5px;
+
+    class START,END terminal;
+    class DRAFT,FIX,SUBMITTED,S1,ASSIGN,UPDATE,WAIT draft;
+    class REVIEW,MCU review;
+    class APPROVED,UNIT_OK,FINAL approved;
+    class D1,D2,D3,D4,D5,D6 decision;
+    class REVISE,REEXAM,RETURN exception;
