@@ -1,55 +1,23 @@
-# ISLAH design system
+# ISLAH - UI review baseline
 
-## Direction
+> Full component audit, 19 October 2026: [inventory and asset mapping](../docs/plans/2026-10-19-component-style-audit.md). Shared 12/8/6px shapes now cover patient forms, role panels, account menus, alerts, controls and interaction states. Role avatars are local Caliber illustrations; the existing RSUD Haji logo replaces the letter mark and default favicon. Earlier notes about the letter mark, 10px buttons and ornamental map fills are superseded.
 
-ISLAH uses a calm clinical operations interface. It should feel trustworthy, direct, and easy to scan in a busy hospital. Patient surfaces prioritize guidance and the next action; staff, clinician, and management surfaces increase information density without changing the visual language.
+> Approved polish, 19 October 2026: see `../docs/plans/2026-10-19-ui-polish.md`. Shared white work panels now contain their heading, filters and table. Spacing and radii are tokenized in `src/app/globals.css`; internal titles use 28/24px, panel titles 18px and table text 14px. `StatusFilter` is a styled, keyboard-operated dropdown. Draft results and certificate requests use `TableFilters` for search, status, result count and reset. Certificate phone numbers remain in details. The detail pane moves to a dialog below 1280px. These refinements supersede older chip-filter/table styling notes below.
 
-## Color
+> **Updated 18 Oktober 2026 (tahap 2):** no queue number before verified payment; a sent registration shows "Menunggu pembayaran" (or "Daftar tunggu") with a "Kode pendaftaran"; the done screen is "Pendaftaran tercatat". Tambah pasien and collective registration are shown disabled ("Belum tersedia"). All demo/simulation/review labels and their switch are removed from source. Screen copy lives in `src/content` (see README.md).
 
-- Canvas: `#f4f7f8`
-- Surface: `#ffffff`
-- Primary text: `#102a37`
-- Secondary text: `#5d707a`
-- Border: `#dce5e8`
-- Accent: `#087f73`
-- Accent dark: `#075f58`
-- Accent soft: `#e3f4f1`
-- Warning: `#9a5b0a` on `#fff4d8`
-- Danger: `#a13838` on `#fdebec`
+Source of truth: `../docs/system-design/UI_GUIDE.md`. This replaces the earlier teal, populated prototype direction.
 
-Use teal for primary action, active navigation, and operational progress. Use semantic colors only for states. Avoid decorative gradients.
+Visual direction "Minimal institusional" (approved 17 Oktober 2026): RS DHJ identity (rsuhaji.jatimprov.go.id) with ITS-like restraint. Mint background #EFF7F3, white hairline cards (12px radius), RS green #0E803F primary actions (10px radius), soft-tinted secondary buttons, chips and big tabular numbers; maroon #8B1C1A for errors, gold #CBB62D for restrained review accents. Locally bundled Montserrat (16px base; Geist Mono for code), a header slot menu for internal roles, and 44px controls.
 
-## Typography
+Since 16 October 2026 every role follows the "RS Haji MCU" wireframe v2 grammar (`../docs/plans/2026-10-16-wireframe-v2-desktop-design.md`): header (ISLAH mark + slot or back + breadcrumb on the left, account right; none on Dapat Nomor Antrian) → title → stacked blocks at content width → primary action last (anchored low on short mobile screens). The wireframe is the layout skeleton only; this visual system stays.
 
-Use the locally bundled Geist variable font. Headings use bold weight and tight tracking between `-0.025em` and `-0.04em`. Body text stays between 14 and 18px with generous line height. Numeric operational data uses tabular numerals.
+- Shell: `AppShell` (`src/components/shell.tsx`) and `ShellChrome` (`nav-menu.tsx`): every role reads the same header: ISLAH mark + "slot" (current screen) on the left, account on the right. For internal roles and admin the slot is a button (▾) that drops the role menu down from the header (AppDialog `placement="top"`: top sheet on phones, panel under the slot from 37.5rem; items with icon, name and a one-line hint); patients see a plain "Beranda" slot (no other screens). No rail or tab bar; internal header and content share one left edge (full width up to 96rem); patients have no drawer: a header with back (or the ISLAH mark on Beranda), a breadcrumb and the account; Beranda (variant `home`) is the patient hub with account, a "Pendaftaran akun ini" box (status chip, code, service date, cancel before payment), bento and Denah; Riwayat, Surat Keterangan, Aduan dan Ulasan and Denah open from Beranda as pop-ups (`PatientDialog`: box on desktop, bottom sheet on phones) through intercepted routes in `src/app/patient/@modal`, while direct links still render the full pages; the footer appears only on Beranda.
+- Shared interaction patterns (every role): `AppDialog` (`src/components/app-dialog.tsx`, box on desktop, bottom sheet on phones) for pop-ups; `DetailPane` (`src/components/roles/detail-pane.tsx`) shows a selected record beside the list from an 80rem viewport and in an `AppDialog` below that; `SuccessPanel` (check badge, heading, result, actions) for completed submissions such as Pendaftaran tercatat; identity form text (labels, placeholders, NIK hint) from `src/lib/identity-meta.ts` for patient registration and the staff forms. Patient registration is a 4-step page flow; the form starts empty and the service date (H+1, Asia/Jakarta) is shown in every step.
+- Tables: `RecordTable` is a real table from c1 and a card list below it; `bounded` keeps a long table inside a scroll box (sticky header and first column) so the page stays about one viewport tall (Worklist per unit), and `Column.compact` pairs short values two per row on phone cards. Formatting helpers (dates, times, masked NIK) live in `src/lib/format.ts`; visit metrics (wait, exam, TAT) in `src/lib/mock-records.ts`.
+- Building blocks: `src/components/frame.tsx` (`Compose`, `Block`, `TitleBlock`, `Alert`, `BigNumberCard`, `SuccessPanel`, `Field`, `StarRating`, `ListCard`, `SummaryBox`, `MediaArea`, `BottomAction`); internal work blocks in `src/components/roles/kit.tsx` (`WorkPanel`, `Toolbar`, `StatusFilter`, `RecordTable`, `Band`, `Counts`, `Rows`, `Status`, `RowAction`, `DetailHead`, `DetailEmpty`, `Notice`, `Actions`, `Placeholder`). Internal screen grammar: title → optional upper band → one work panel (heading + actions, toolbar, table filling the panel) → detail beside the table from c3 or as a sheet.
+- Composition variants: `center`, `home`, `hero-split`, `form-rail`, `list-summary`, `pair`, `rows`, `work`, `work-hero`, chosen per screen in `src/lib/screens-patient.ts` / `screens-internal.ts`.
+- Desktop: content-aware expansion on the `page` container, steps c1 37.5rem, c2 56.25rem, c3 75rem. Width goes to gutters and gaps first; blocks are protected (`rigid`, `aspect`, `measure` form 40rem, `row` 35rem with `--row-box: 30rem` as the standard label ↔ value track, `grid` items 10–17.5rem, `fluid` tables ≤ 75rem). DOM order is reading order at every width: no `order`, `dense`, or `*-reverse`.
+- Styles per area: tokens and variants in `src/app/globals.css`, patient in `src/styles/patient.css`, internal in `src/styles/internal.css`.
 
-## Shape and elevation
-
-- Content containers: 14px radius.
-- Inputs and buttons: 10px radius.
-- Status labels: full pill.
-- Use borders and whitespace for hierarchy. Avoid stacking shadows and borders.
-- Large accent panels may use solid teal without elevation.
-
-## Layout
-
-Desktop role surfaces use a 248px persistent sidebar and a content area capped at 1320px. Mobile uses a compact header and horizontal role navigation. Dashboard grids collapse to a single column on small screens. Wide operational tables scroll horizontally.
-
-## Components
-
-- `AppShell` owns product identity, role navigation, prototype labeling, and page hierarchy.
-- `Section` groups related information on a white surface.
-- `Metric` presents operational values with a label and short context.
-- `Status` uses semantic tone and is reserved for compact state labels.
-- `ProgressSteps` shows sequential patient progress.
-- `DataTable` handles dense operational records.
-- `MiniBars` provides simple comparative visualization without chart dependencies.
-- `StaticAction` looks actionable but is identified as prototype-only where it would mutate data.
-
-## Content rules
-
-Use Indonesian interface copy. Put the next action before secondary detail. Label all sample data as illustrative. Do not imply that prototype controls submit, scan, pay, download, verify, or store information. Do not use real patient data.
-
-## Accessibility
-
-Maintain visible keyboard focus, readable contrast, 44px minimum controls, descriptive headings, and responsive reflow. Respect reduced-motion preferences. Tables require clear headers and horizontal overflow handling.
+Data on internal screens and in the staged patient flow is synthetic and local; the UI uses plain product language with no demo, simulation, use-case or Q-number labels. Spelling "antrian", "Laboratorium", "WhatsApp". Screen copy: `src/content` (`site.ts`, `internal.ts`, `patient.ts`). No eyebrow labels and no thick colored side borders. Only `/patient/registration/session` and `/management/capacity` call the API; the local session lives in this tab's sessionStorage, and the access token stays in memory only. Layout was verified automatically at 320–1920px (no overflow, same block order, protected blocks within bounds).
