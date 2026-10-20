@@ -1,0 +1,90 @@
+%%{init: {"theme":"neutral","themeVariables":{"fontFamily":"Arial, sans-serif","fontSize":"14px"}}}%%
+erDiagram
+    account ||--o{ account_role : has
+    role ||--o{ account_role : grants
+    account ||--o{ auth_session : authenticates
+    account ||--o{ patient_access : holds
+    patient ||--o{ patient_access : permits
+    patient ||--o{ consent : records
+    patient ||--o{ visit : attends
+    unit ||--o{ room : contains
+    room ||--o{ doctor_presence : hosts
+    account ||--o{ doctor_presence : checks_in
+    unit ||--o{ service : offers
+    service ||--o{ service_version : versions
+    package ||--o{ package_item : includes
+    service_version ||--o{ package_item : included_in
+    operating_day ||--o{ registration_session : opens
+    operating_day ||--o{ capacity_resource : limits
+    account ||--o{ registration_hold : reserves
+    registration_hold ||--|{ hold_allocation : consumes
+    capacity_resource ||--o{ hold_allocation : allocates
+    registration_hold o|--o{ visit : converts_to
+    collective_import o|--o{ visit : imports
+    visit ||--|{ examination : requires
+    service_version ||--o{ examination : snapshots
+    examination ||--o{ queue_assignment : schedules
+    room o|--o{ queue_assignment : serves
+    examination ||--o{ examination_event : tracks
+    examination ||--o{ result_revision : records
+    result_revision ||--o| result_verification : receives
+    visit ||--o{ final_review : reviews
+    final_review ||--|{ final_review_item : includes
+    result_verification ||--o{ final_review_item : snapshots
+    visit ||--o{ charge : bills
+    visit o|--o{ payment : settles
+    registration_hold o|--o{ payment : funds
+    payment ||--o{ payment_event : deduplicates
+    visit ||--o{ certificate_request : requests
+    visit ||--o{ document : issues
+    document ||--o{ delivery : sends
+    visit ||--o{ feedback : receives
+
+    account {
+        uuid id PK
+        text status
+    }
+    patient {
+        uuid id PK
+        bytea nik_ciphertext
+        text nik_lookup_digest UK
+    }
+    visit {
+        uuid id PK
+        uuid patient_id FK
+        date service_date
+        text booking_code UK
+        integer queue_number
+        text status
+    }
+    examination {
+        uuid id PK
+        uuid visit_id FK
+        uuid service_version_id FK
+        text status
+        integer version
+    }
+    result_revision {
+        uuid id PK
+        uuid examination_id FK
+        integer revision
+        jsonb payload
+    }
+    outbox_job {
+        uuid id PK
+        text dedupe_key UK
+        text status
+        timestamptz lease_until
+    }
+    audit_event {
+        bigint id PK
+        uuid actor_id FK
+        text action
+        uuid entity_id
+    }
+    idempotency_record {
+        uuid actor_id PK
+        text action PK
+        text request_key PK
+        text request_digest
+    }
