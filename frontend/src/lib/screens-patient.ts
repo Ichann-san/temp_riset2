@@ -18,7 +18,7 @@ export const patientWorkspace: Workspace = {
     { slug: "registration/terms", title: "Syarat dan ketentuan", subtitle: "Langkah 2 dari 4", description: "Baca dan setujui sebelum memilih layanan.", header: "back", back: reg, compose: "center", size: "text" },
     { slug: "registration/services", title: "Layanan", subtitle: "Langkah 3 dari 4", description: "Pilih paket atau layanan pemeriksaan.", header: "back", back: `${reg}/terms`, compose: "list-summary" },
     { slug: "registration/review", title: "Rincian", subtitle: "Langkah 4 dari 4", description: "Periksa kembali sebelum mengirim pendaftaran.", header: "back", back: `${reg}/services`, compose: "pair", anchored: true },
-    { slug: "registration/done", title: "Pendaftaran tercatat", description: "Pendaftaran menunggu pembayaran.", header: "none", compose: "center", size: "hero", untitled: true },
+    { slug: "registration/done", title: "Pendaftaran berhasil", description: "Nomor antrean pendaftaran terbit; nomor antrean MCU menyusul setelah daftar ulang.", header: "none", compose: "center", size: "hero", untitled: true },
     { slug: "registration/session", title: "Pendaftaran dengan token", description: "Kirim pendaftaran ke server dengan token akses dari operator.", header: "back", back: reg, compose: "center" },
     { slug: "map", title: "Denah", description: "Denah ruang pemeriksaan RSUD Haji.", header: "back", back: "/patient", compose: "center", size: "wide" },
     { slug: "results", title: "Riwayat", description: "Semua pendaftaran MCU akun ini.", header: "back", back: "/patient", compose: "rows" },

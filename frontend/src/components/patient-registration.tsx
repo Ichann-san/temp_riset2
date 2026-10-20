@@ -8,7 +8,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type ChangeEvent, type FormEvent, useEffect, useRef, useState } from "react";
-import { Block, BottomAction, Field, Icon, SelectField, SuccessPanel, SummaryBox } from "@/components/frame";
+import { BigNumberCard, Block, BottomAction, Field, Icon, SelectField, SuccessPanel, SummaryBox } from "@/components/frame";
 import { ApplicationFacts, CancelControl, StatusChip } from "@/components/patient";
 import { patientContent } from "@/content/patient";
 import { fullDay, jakartaDay, longDay, maskNik, nextServiceDay } from "@/lib/format";
@@ -159,8 +159,8 @@ function Blocked({ item, serviceDate, account, onCancelled }: { item: Applicatio
       <section className="surface section stack" aria-labelledby="reg-blocked">
         <div className="row-between"><h2 id="reg-blocked">{unfinished ? blocked.unfinishedTitle : blocked.sameDateTitle}</h2><StatusChip item={item} /></div>
         <p>{unfinished ? blocked.unfinishedText : blocked.sameDateText}</p>
-        <ApplicationFacts item={item} facts={["code", "serviceDate", "patient", "services", "submittedAt"]} />
-        {item.status === "awaiting_payment" && <p className="app-note">{patientContent.application.paymentNote}</p>}
+        <ApplicationFacts item={item} facts={["registrationQueue", "mcuQueue", "code", "serviceDate", "patient", "services", "submittedAt"]} />
+        {!item.mcuQueue && <p className="app-note">{patientContent.application.queueNote}</p>}
         <CancelControl item={item} onCancelled={onCancelled} />
       </section>
     </Block>
@@ -311,7 +311,7 @@ export function ReviewStep() {
   </>;
 }
 
-/** After the final confirmation: registration code and "Menunggu pembayaran"; no queue number, payment or amount. */
+/** Registration succeeds immediately; the MCU queue number remains unavailable until re-registration. */
 export function DoneStep() {
   const state = useMockState();
   const latest = state ? unfinishedOf(state) : undefined;
@@ -325,8 +325,9 @@ export function DoneStep() {
       actions={<Link href="/patient" className="primary-button">{done.back}</Link>}>
       <div className="done-card">
         <StatusChip item={latest} />
-        <ApplicationFacts item={latest} facts={["code", "serviceDate", "patient", "submittedBy"]} />
-        <p className="app-note">{patientContent.application.paymentNote}</p>
+        <BigNumberCard label={appLabels.registrationQueue} value={latest.registrationQueue ?? "Belum diterbitkan"} hint="Bawa nomor ini saat daftar ulang di rumah sakit." />
+        <ApplicationFacts item={latest} facts={["mcuQueue", "code", "serviceDate", "patient", "submittedBy"]} />
+        <p className="app-note">{patientContent.application.queueNote}</p>
       </div>
     </SuccessPanel>
   </Block>;

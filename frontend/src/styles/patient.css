@@ -49,14 +49,14 @@
 .queue-row summary::-webkit-details-marker { display: none; }
 .queue-row summary:hover { background: #f7fbf9; }
 .queue-row[open] summary svg { transform: rotate(180deg); }
-/* Service date block (not a queue number: none exists before verified payment). */
+/* Service date stays separate from both queue identifiers. */
 .queue-date { display: grid; justify-items: center; min-inline-size: 4.25rem; padding: var(--space-2); border-radius: var(--radius-control); background: var(--accent-soft); color: var(--accent-dark); text-align: center; }
 .queue-date small { font-size: .75rem; font-weight: 500; line-height: 1.3; }
 .queue-date strong { font-size: 1rem; font-weight: 700; line-height: 1.2; white-space: nowrap; }
 .queue-who { display: grid; gap: .25rem; min-width: 0; }
 .queue-who > span:first-child { overflow: hidden; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
 .queue-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .5rem; }
-.queue-meta small { color: var(--muted); font-size: .8125rem; white-space: nowrap; }
+.queue-meta small { color: var(--muted); font-size: .8125rem; overflow-wrap: anywhere; }
 .queue-detail { display: grid; gap: .75rem; padding: 0 1.125rem 1rem; }
 .queue-detail .secondary-button { justify-self: start; }
 .queue-estimate { display: grid; gap: .125rem; }
@@ -120,7 +120,8 @@
 }
 
 /* ---------- Registration status vocabulary and shared notes ---------- */
-.status-chip[data-state="awaiting_payment"] { background: #fffbea; color: #514300; }
+.status-chip[data-state="registered"] { background: #fffbea; color: #514300; }
+.status-chip[data-state="re_registered"] { background: var(--accent-soft); color: var(--accent-dark); }
 .status-chip[data-state="waiting"] { background: #eef2ee; color: #3d4a42; }
 .status-chip[data-state="cancelled"] { background: #eceeed; color: var(--muted); }
 .app-note { padding: var(--space-3); border-radius: var(--radius-control); background: var(--surface-soft); border: 1px solid var(--line); color: var(--foreground); font-size: var(--text-table); }

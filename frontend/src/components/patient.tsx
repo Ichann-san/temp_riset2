@@ -25,9 +25,11 @@ export function StatusChip({ item }: { item: Application }) {
 }
 
 type Fact = keyof typeof labels;
-/** Facts of one registration as a summary list (no queue number: none exists before verified payment). */
+/** Facts of one registration as a summary list with separate registration and MCU queue numbers. */
 export function ApplicationFacts({ item, facts }: { item: Application; facts: Fact[] }) {
   const value: Record<Fact, ReactNode> = {
+    registrationQueue: <span className="tabular">{item.registrationQueue ?? "Belum diterbitkan"}</span>,
+    mcuQueue: <span className="tabular">{item.mcuQueue ?? "Diterbitkan setelah daftar ulang"}</span>,
     code: <span className="tabular">{item.code}</span>,
     status: copy.status[item.status],
     serviceDate: fullDay(item.serviceDate),
@@ -40,7 +42,7 @@ export function ApplicationFacts({ item, facts }: { item: Application; facts: Fa
   return <dl className="summary">{facts.map((key) => <div key={key} className="summary-row"><dt>{labels[key]}</dt><dd>{value[key]}</dd></div>)}</dl>;
 }
 
-/** "Batalkan pendaftaran" with an inline confirmation (focus on "Tidak", the safe choice). Only before payment. */
+/** "Batalkan pendaftaran" with an inline confirmation (focus on "Tidak", the safe choice). Only before re-registration. */
 export function CancelControl({ item, onCancelled }: { item: Application; onCancelled: (message: string) => void }) {
   const [confirming, setConfirming] = useState(false);
   const confirmRef = useRef<HTMLDivElement>(null);
@@ -72,12 +74,12 @@ function ApplicationRow({ item, onCancelled }: { item: Application; onCancelled:
   return <details className="queue-row">
     <summary>
       <span className="queue-date"><small>{copy.home.box.dateLabel}</small><strong className="tabular">{shortDay(item.serviceDate)}</strong></span>
-      <span className="queue-who"><span>{item.identity.name}</span><span className="queue-meta"><small className="tabular">{item.code}</small><StatusChip item={item} /></span></span>
+      <span className="queue-who"><span>{item.identity.name}</span><span className="queue-meta"><small className="tabular">{item.registrationQueue ? `${labels.registrationQueue}: ${item.registrationQueue}` : item.code}</small><StatusChip item={item} /></span></span>
       <Icon name="chevron" size={18} />
     </summary>
     <div className="queue-detail">
-      <ApplicationFacts item={item} facts={["code", "serviceDate", "services", "submittedAt", "submittedBy"]} />
-      {item.status === "awaiting_payment" && <p className="app-note">{copy.application.paymentNote}</p>}
+      <ApplicationFacts item={item} facts={["registrationQueue", "mcuQueue", "code", "serviceDate", "services", "submittedAt", "submittedBy"]} />
+      {!item.mcuQueue && <p className="app-note">{copy.application.queueNote}</p>}
       <CancelControl item={item} onCancelled={onCancelled} />
     </div>
   </details>;
@@ -179,6 +181,8 @@ export function History() {
     <ol className="history-list">{mine.map((item) => <li key={item.code}>
       <ListCard title={history.title(fullDay(item.serviceDate))} status={copy.status[item.status]} tone={item.status === "cancelled" ? "muted" : undefined} meta={[
         [labels.patient, item.identity.name],
+        [labels.registrationQueue, item.registrationQueue ?? "Belum diterbitkan"],
+        [labels.mcuQueue, item.mcuQueue ?? "Diterbitkan setelah daftar ulang"],
         [labels.code, <span key="c" className="tabular">{item.code}</span>],
         [labels.submittedAt, dateTimeOf(item.submittedAt)],
         [labels.services, servicesOf(item)],

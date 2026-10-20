@@ -42,7 +42,7 @@ const crumbsFor = (section: string) => [
 export function PatientPage({ section }: { section: string }) {
   const screen = screenFor(section);
   return <AppShell role="patient" section={section} header={screen.header} back={screen.back} crumbs={crumbsFor(section)} compose={screen.compose} size={screen.size} anchored={screen.anchored}
-    title={screen.untitled ? undefined : screen.title} subtitle={screen.subtitle} footer={section === ""}>
+    title={screen.untitled ? undefined : screen.title} subtitle={screen.subtitle} footer={section === ""} menuBackground={section === ""}>
     {content[section]}
   </AppShell>;
 }

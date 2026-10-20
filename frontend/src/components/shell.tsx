@@ -49,13 +49,18 @@ function PatientHeader({ back, crumbs }: { back?: string; crumbs: Crumb[] }) {
  * One shell for every role (wireframe grammar): header (menu | back | none; patients: back + breadcrumb) → <main> container → <Compose> with the title
  * block first, then the page's blocks. Internal roles and admin switch screens through the header slot menu (nav-menu.tsx).
  */
-export function AppShell({ role, section, title, subtitle, header = "menu", back, crumbs, compose = "center", size, anchored, align, footer, children }: {
+export function AppShell({ role, section, title, subtitle, header = "menu", back, crumbs, compose = "center", size, anchored, align, footer, menuBackground = false, children }: {
   role: Role | "admin"; section?: string; title?: string; subtitle?: string; header?: "menu" | "back" | "none"; back?: string; crumbs?: Crumb[];
-  compose?: Variant; size?: Size; anchored?: boolean; align?: "start"; footer?: boolean; children: ReactNode;
+  compose?: Variant; size?: Size; anchored?: boolean; align?: "start"; footer?: boolean; menuBackground?: boolean; children: ReactNode;
 }) {
   const internal = role !== "patient";
   const label = role === "admin" ? site.nav.adminRole : workspaces[role].label;
-  return <AuthGate role={role}><div className="shell" data-kind={internal ? "internal" : "patient"} data-compose={compose} data-size={size}>
+  return <AuthGate role={role}><div className="shell" data-kind={internal ? "internal" : "patient"} data-compose={compose} data-size={size} data-background={menuBackground ? "menu" : undefined}>
+    {menuBackground && <div className="menu-lines" aria-hidden="true">
+      {(["green", "maroon", "gold"] as const).flatMap((color) =>
+        (["arc", "bend", "loop", "sweep"] as const).map((shape) =>
+          <span key={`${color}-${shape}`} className="menu-line" data-color={color} data-shape={shape} />))}
+    </div>}
     <a className="skip-link" href="#main-content">{site.shell.skipLink}</a>
     {header !== "none" && role === "patient" && crumbs && <PatientHeader back={header === "back" ? back : undefined} crumbs={crumbs} />}
     {header !== "none" && !(role === "patient" && crumbs) && <ShellChrome items={navFor(role, section)} back={header === "back" ? back : undefined}

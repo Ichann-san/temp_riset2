@@ -17,7 +17,9 @@ import { dateTimeOf, fullDay, timeOf } from "@/lib/format";
 import { identityHints, identityLabels, identityPlaceholders, type IdentityField } from "@/lib/identity-meta";
 
 const copy = patientContent.connected;
-const statusOf = (application: Application) => patientContent.status[application.state];
+const statusOf = (application: Application) => ({
+  awaiting_payment: "Tempat ditahan", waiting: "Daftar tunggu", confirmed: "Terkonfirmasi", cancelled: "Dibatalkan",
+})[application.state];
 
 // Form field (identity-meta key) → API key.
 const apiKey: Record<IdentityField, keyof PatientInput> = {

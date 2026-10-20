@@ -7,7 +7,7 @@ import { RoleAvatar } from "@/components/role-avatar";
 import { type Column, RecordTable, WorkPanel } from "@/components/roles/kit";
 import { internal, site } from "@/content";
 import { type MockAccount, mockAccounts, roleLabel } from "@/lib/mock-accounts";
-import { type Role, landingHref, screenOf, workspaces } from "@/lib/workspaces";
+import { type Role, landingHref, menuOf, screenOf, workspaces } from "@/lib/workspaces";
 
 type InternalRole = Exclude<Role, "patient">;
 
@@ -27,7 +27,7 @@ export const workspaceMetadata = (role: InternalRole, section: string): Metadata
  */
 export function Workspace({ role, section, children }: { role: InternalRole; section: string; children: ReactNode }) {
   const screen = screenFor(role, section);
-  return <AppShell role={role} section={section} title={screen.title} subtitle={screen.description} compose={screen.compose ?? "work"} align="start">
+  return <AppShell role={role} section={section} title={screen.title} subtitle={screen.description} compose={screen.compose ?? "work"} align="start" menuBackground={menuOf(role).some((item) => item.slug === section)}>
     {children}
   </AppShell>;
 }
@@ -44,7 +44,7 @@ const accountColumns: Column<MockAccount>[] = [
 
 /** Admin area (composition "work"): one table of accounts, each with a link to its role's workspace. Admin is not a PRD role. */
 export function AdminPage() {
-  return <AppShell role="admin" title={copy.title} subtitle={copy.description} compose="work" align="start">
+  return <AppShell role="admin" title={copy.title} subtitle={copy.description} compose="work" align="start" menuBackground>
     <Block id="main" energy={3} protect="fluid">
       <WorkPanel id="admin-accounts" title={copy.accounts.title} description={copy.accounts.description}>
         <RecordTable labelledBy="admin-accounts" rows={mockAccounts} columns={accountColumns} rowKey={(account) => account.username} empty={copy.accounts.empty} width="fit" />

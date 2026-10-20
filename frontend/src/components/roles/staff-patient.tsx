@@ -15,6 +15,7 @@ import { DetailPane } from "@/components/roles/detail-pane";
 import { useSelection } from "@/components/roles/selection";
 import { internal, site } from "@/content";
 import { maskNikTail } from "@/lib/format";
+import { nextQueueNumber } from "@/lib/queue-numbers";
 import { identityLabels } from "@/lib/identity-meta";
 import { type Patient, costLines, packageLabel, patients, rupiah } from "@/lib/mock-records";
 
@@ -27,7 +28,7 @@ const common = internal.common;
 const toValues = (row: Row): IdentityValues => ({ name: row.name, nik: row.nik, birthDate: row.birthDate, addressKtp: row.addressKtp, addressHome: row.addressHome, phone: row.phone, gender: row.gender, occupation: row.occupation });
 
 export function StaffPatient() {
-  const [rows, setRows] = useState<Row[]>(() => patients.map((item) => ({ ...item, status: item.reRegistered ? "Terverifikasi" : "Menunggu daftar ulang" })));
+  const [rows, setRows] = useState<Row[]>(() => patients.map((item) => ({ ...item, queue: item.reRegistered ? `MCU-${item.queue}` : "", status: item.reRegistered ? "Terverifikasi" : "Menunggu daftar ulang" })));
   const [filter, setFilter] = useState<RowStatus | "">("Menunggu daftar ulang");
   const { selected, select, headingRef, sheet, closeSheet } = useSelection(null);
   const [query, setQuery] = useState("");
@@ -98,7 +99,7 @@ export function StaffPatient() {
           <Rows items={[
             [identityLabels.name, current.name], [identityLabels.nik, <span key="nik" className="tabular">{maskNikTail(current.nik)}</span>], [identityLabels.birthDate, current.birthDate],
             [identityLabels.gender, current.gender], [identityLabels.addressKtp, current.addressKtp], [identityLabels.addressHome, current.addressHome],
-            [identityLabels.phone, current.phone], [identityLabels.occupation, current.occupation], [copy.detail.rows.queue, <span key="q" className="tabular">{current.queue}</span>],
+            [identityLabels.phone, current.phone], [identityLabels.occupation, current.occupation], [copy.detail.rows.queue, <span key="q" className="tabular">{current.queue || copy.detail.queuePending}</span>],
           ]} />
         </SummaryBox>}
         <SummaryBox title={copy.detail.cost}>
@@ -109,8 +110,10 @@ export function StaffPatient() {
         <Notice message={message} />
         <Actions>
           <button type="button" className="primary-button" disabled={current.status === "Terverifikasi" || !!edit} onClick={() => {
-            update({ status: "Terverifikasi" });
-            setMessage({ tone: "info", text: copy.messages.verified });
+            if (current.reRegistered) return;
+            const queue = nextQueueNumber("MCU", rows.filter((row) => row.reRegistered).map((row) => row.queue));
+            update({ status: "Terverifikasi", reRegistered: true, queue });
+            setMessage({ tone: "info", text: `${copy.messages.verified} ${copy.detail.rows.queue}: ${queue}.` });
           }}>{current.status === "Terverifikasi" ? common.actions.verified : common.actions.verify}</button>
         </Actions>
       </>}

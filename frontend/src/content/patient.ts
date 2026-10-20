@@ -7,7 +7,7 @@ import type { IconName } from "@/components/icon";
 
 /* ───── Types ───── */
 
-export type ApplicationStatus = "awaiting_payment" | "waiting" | "confirmed" | "cancelled";
+export type ApplicationStatus = "registered" | "re_registered" | "waiting" | "cancelled";
 
 export interface BentoItem {
   key: "registration" | "history" | "certificates" | "feedback";
@@ -29,7 +29,7 @@ export interface DialogCopy {
 }
 
 export interface PatientContent {
-  /** Fixed status vocabulary of a registration (mirrors the backend states). */
+  /** Patient UI stages; legacy API status codes are kept separate in registration.tsx. */
   status: Record<ApplicationStatus, string>;
   home: {
     greeting: (name: string) => string;
@@ -44,8 +44,8 @@ export interface PatientContent {
     map: { title: string; text: string; action: string; label: string };
   };
   application: {
-    labels: { code: string; status: string; serviceDate: string; patient: string; nik: string; services: string; submittedAt: string; submittedBy: string };
-    paymentNote: string;
+    labels: { registrationQueue: string; mcuQueue: string; code: string; status: string; serviceDate: string; patient: string; nik: string; services: string; submittedAt: string; submittedBy: string };
+    queueNote: string;
     cancel: {
       action: string;
       question: (code: string, name: string, serviceDate: string) => string;
@@ -118,9 +118,9 @@ export interface PatientContent {
 
 export const patientContent: PatientContent = {
   status: {
-    awaiting_payment: "Menunggu pembayaran",
+    registered: "Menunggu daftar ulang",
+    re_registered: "Siap MCU",
     waiting: "Daftar tunggu",
-    confirmed: "Terkonfirmasi",
     cancelled: "Dibatalkan",
   },
 
@@ -146,10 +146,10 @@ export const patientContent: PatientContent = {
   // One registration (Beranda box, registration page, done screen)
   application: {
     labels: {
-      code: "Kode pendaftaran", status: "Status", serviceDate: "Tanggal pemeriksaan", patient: "Pasien", nik: "NIK",
+      registrationQueue: "Nomor antrean pendaftaran", mcuQueue: "Nomor antrean MCU", code: "Kode pendaftaran", status: "Status", serviceDate: "Tanggal pemeriksaan", patient: "Pasien", nik: "NIK",
       services: "Layanan", submittedAt: "Dikirim", submittedBy: "Didaftarkan oleh",
     },
-    paymentNote: "Pembayaran online belum tersedia. Nomor antrian MCU diberikan setelah pembayaran terverifikasi.",
+    queueNote: "Gunakan nomor antrean pendaftaran saat datang untuk daftar ulang. Nomor antrean MCU diterbitkan setelah daftar ulang selesai.",
     cancel: {
       action: "Batalkan pendaftaran",
       question: (code, name, serviceDate) => `Batalkan pendaftaran ${code} atas nama ${name} untuk tanggal pemeriksaan ${serviceDate}?`,
@@ -193,7 +193,7 @@ export const patientContent: PatientContent = {
       sections: [
         { title: "1. Pendaftaran", text: "Satu akun dapat mendaftarkan satu pasien untuk satu tanggal layanan. Pasien tidak harus pemilik akun. Isi data pasien dengan benar dan lengkap sesuai KTP." },
         { title: "2. Tanggal pemeriksaan", text: "Tanggal pemeriksaan ditetapkan oleh sistem, yaitu hari berikutnya setelah pendaftaran dikirim (WIB). Tanggal tidak dapat dipilih dan tidak berubah setelah pendaftaran tercatat." },
-        { title: "3. Biaya dan pembayaran", text: "Tarif dan cara pembayaran mengikuti ketentuan rumah sakit. Nomor antrian MCU diberikan setelah pembayaran terverifikasi." },
+        { title: "3. Nomor antrean", text: "Nomor antrean pendaftaran diterbitkan setelah registrasi. Saat datang ke rumah sakit, selesaikan daftar ulang untuk mendapatkan nomor antrean MCU. Kedua nomor ini berbeda." },
         { title: "4. Pelaksanaan pemeriksaan", text: "Ketentuan kehadiran dan persiapan pemeriksaan mengikuti dokumen rumah sakit." },
         { title: "5. Data pribadi", text: "Data pasien disimpan dan dipakai sesuai kebijakan privasi rumah sakit." },
       ],
@@ -218,8 +218,8 @@ export const patientContent: PatientContent = {
     },
     done: {
       srHeading: "Pendaftaran MCU",
-      heading: "Pendaftaran tercatat",
-      text: "Pendaftaran ini juga tampil di Beranda.",
+      heading: "Pendaftaran berhasil",
+      text: "Nomor antrean pendaftaran Anda sudah terbit. Selesaikan daftar ulang di rumah sakit untuk mendapatkan nomor antrean MCU.",
       back: "Kembali ke beranda",
     },
   },
@@ -274,8 +274,8 @@ export const patientContent: PatientContent = {
     reload: "Perbarui status",
     current: {
       title: "Pendaftaran akun ini", status: "Status", code: "Kode pendaftaran", position: "Urutan daftar tunggu",
-      heldNote: "Tempat pemeriksaan ditahan untuk pendaftaran ini. Pembayaran online belum tersedia. Nomor antrian MCU diberikan setelah pembayaran terverifikasi.",
-      waitingNote: "Pendaftaran ini ada di daftar tunggu. Bila tempat pemeriksaan tersedia, pendaftaran dipindahkan sesuai urutan dan statusnya menjadi Menunggu pembayaran. Selama di daftar tunggu tidak ada pembayaran yang diminta.",
+      heldNote: "Tempat pemeriksaan ditahan oleh server. Kode pendaftaran ini belum merupakan nomor antrean. Penerbitan kedua nomor antrean melalui server belum tersedia.",
+      waitingNote: "Pendaftaran ada di daftar tunggu FIFO. Saat tempat pemeriksaan tersedia, server memindahkannya ke tempat utama. Posisi daftar tunggu berbeda dari nomor antrean pendaftaran maupun nomor antrean MCU.",
       cancel: "Batalkan pendaftaran",
     },
     form: {

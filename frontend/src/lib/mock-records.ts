@@ -42,7 +42,7 @@ export type Patient = {
 };
 
 const patient = (no: string, packageCode: PackageCode | null, extras: ServiceCode[], gender: "Perempuan" | "Laki-laki", reRegistered = true): Patient => ({
-  no, name: `Pasien ${no}`, booking: `B-0${no}`, queue: `0${no}`, packageCode, extras,
+  no, name: `Pasien ${no}`, booking: `P-0${no}`, queue: `0${no}`, packageCode, extras,
   nik: `00000000000000${no}`, birthDate: "1990-01-01", gender, addressKtp: `Jl. Mawar No. ${Number(no)}`, addressHome: `Jl. Mawar No. ${Number(no)}`,
   phone: `08xx-xxxx-00${no}`, occupation: "Karyawan swasta", reRegistered,
 });

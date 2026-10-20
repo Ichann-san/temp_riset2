@@ -2,19 +2,14 @@
 // and feedback/certificate requests. Kept in this tab's sessionStorage only; nothing is sent to a server. Signing out or
 // closing the tab clears it. Older stored shapes are normalized on read (see normalize()).
 //
-// Registration rules mirrored from the approved backend design (owner decisions 18 Oktober 2026):
-// - the account is the responsible submitter, not necessarily the patient; every registration records its account;
-// - the service date is Asia/Jakarta today + 1, assigned at submit and frozen on the registration (never recomputed);
-// - submitting from Rincian puts the registration in "Menunggu pembayaran" with a registration code (never a queue number);
-// - one unfinished registration (awaiting payment or waiting) per account; one active registration per account per service date;
-// - a NIK may have only one active registration per service date (waiting, awaiting payment or confirmed);
-// - cancelling before payment is allowed and permits a new attempt.
-// This tab cannot hold capacity or see other accounts, so it never represents places, the waiting list or payment: no
-// registration here reaches "Terkonfirmasi", and none carries a queue number.
+// UI decision, 20 October 2026: registration issues a registration queue number immediately;
+// MCU queue numbers are issued only after staff complete re-registration. Admin payment is not a step.
+// This tab stores UI state only. It does not allocate hospital capacity or server-issued queue numbers.
 import { useSyncExternalStore } from "react";
 import type { ApplicationStatus } from "@/content/patient";
 import { accountByUsername } from "@/lib/mock-accounts";
 import { nextServiceDay } from "@/lib/format";
+import { nextQueueNumber } from "@/lib/queue-numbers";
 
 export type { ApplicationStatus } from "@/content/patient";
 export type Identity = { name: string; nik: string; birthDate: string; addressKtp: string; addressHome: string; phone: string; gender: string; occupation: string };
@@ -24,6 +19,7 @@ export type Identity = { name: string; nik: string; birthDate: string; addressKt
  */
 export type Application = {
   code: string; account: string; identity: Identity; packageCode: string | null; services: string[]; total: number;
+  registrationQueue: string | null; mcuQueue: string | null;
   serviceDate: string; status: ApplicationStatus; submittedAt: string; cancelledAt?: string;
 };
 /** Registration in progress; the patient form starts empty. Each step page derives its guard from this data. */
@@ -38,12 +34,12 @@ export type MockState = {
   certificates: CertificateRequest[];
 };
 
-const statuses: ApplicationStatus[] = ["awaiting_payment", "waiting", "confirmed", "cancelled"];
+const statuses: ApplicationStatus[] = ["registered", "re_registered", "waiting", "cancelled"];
 /** Unfinished = submitted but not yet confirmed or cancelled. */
-export const isUnfinished = (item: Application) => item.status === "awaiting_payment" || item.status === "waiting";
+export const isUnfinished = (item: Application) => item.status === "registered" || item.status === "waiting";
 /** Active = counts for the per-date account rule and the NIK rule. */
 export const isActive = (item: Application) => item.status !== "cancelled";
-/** May be cancelled by the account (before payment). */
+/** May be cancelled by the account before re-registration. */
 export const isCancellable = isUnfinished;
 
 export const emptyIdentity: Identity = { name: "", nik: "", birthDate: "", addressKtp: "", addressHome: "", phone: "", gender: "", occupation: "" };
@@ -72,8 +68,12 @@ function toIdentity(value: unknown): Identity {
 function toApplication(value: Loose): Application | null {
   if (typeof value.code !== "string" || !isDay(value.serviceDate) || typeof value.submittedAt !== "string") return null;
   const cancelledAt = typeof value.cancelledAt === "string" ? value.cancelledAt : undefined;
-  const stored = statuses.find((status) => status === value.status) ?? "awaiting_payment";
+  const stored = statuses.find((status) => status === value.status) ?? "registered";
+  // Do not invent a queue number for old registrations that never received one.
+  const registrationQueue = typeof value.registrationQueue === "string" ? value.registrationQueue : null;
+  const mcuQueue = typeof value.mcuQueue === "string" ? value.mcuQueue : null;
   return {
+    registrationQueue, mcuQueue,
     code: value.code, account: text(value.account), identity: toIdentity(value.identity),
     packageCode: typeof value.packageCode === "string" ? value.packageCode : null, services: strings(value.services),
     total: typeof value.total === "number" ? value.total : 0, serviceDate: value.serviceDate,
@@ -162,7 +162,7 @@ export type SubmitResult = { ok: true; application: Application } | { ok: false;
 
 /**
  * Final confirmation from Rincian. Assigns and freezes the service date, re-checks the account and NIK rules against the
- * current state, records the registration as "Menunggu pembayaran" and starts a new empty draft.
+ * current state, issues a registration queue number and starts a new empty draft. No payment step.
  */
 export function submitApplication(input: { identity: Identity; packageCode: string | null; services: string[]; total: number }, now: Date = new Date()): SubmitResult {
   const state = read();
@@ -172,7 +172,9 @@ export function submitApplication(input: { identity: Identity; packageCode: stri
   if (nikTaken(state, input.identity.nik, serviceDate)) return { ok: false, reason: "duplicate_nik" };
   const application: Application = {
     ...input, code: newCode(new Set(state.applications.map((item) => item.code))), account: state.username,
-    serviceDate, status: "awaiting_payment", submittedAt: now.toISOString(),
+    registrationQueue: nextQueueNumber("P", state.applications.filter((item) => item.serviceDate === serviceDate).flatMap((item) => item.registrationQueue ? [item.registrationQueue] : [])),
+    mcuQueue: null,
+    serviceDate, status: "registered", submittedAt: now.toISOString(),
   };
   write({ ...state, applications: [application, ...state.applications], draft: emptyDraft });
   return { ok: true, application };

@@ -180,6 +180,45 @@ td { padding: 0; }
 
 /* ---------- Shell: one for every role ---------- */
 .shell { --compose-max: var(--measure-form); }
+/* Four CSS line templates in each brand color. Fixed placements keep server and
+   client output identical; only menu landing screens opt into this layer. */
+.shell[data-background="menu"] { position: relative; isolation: isolate; }
+.menu-lines { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; user-select: none; }
+.menu-line { position: absolute; display: block; inline-size: clamp(15rem, 32vw, 34rem); block-size: clamp(12rem, 26vw, 28rem); border: 3px solid currentColor; opacity: .13; }
+.menu-line[data-color="green"] { color: #16801c; }
+.menu-line[data-color="maroon"] { color: #8b1c1a; }
+.menu-line[data-color="gold"] { color: #cbb62d; opacity: .22; }
+.menu-line[data-shape="arc"] { border-radius: 50%; border-inline-end-color: transparent; border-block-end-color: transparent; }
+.menu-line[data-shape="bend"] { border-width: 4px 0 0 4px; border-start-start-radius: 42%; inline-size: clamp(12rem, 24vw, 26rem); block-size: 12rem; }
+.menu-line[data-shape="loop"] { border-radius: 48% 52% 68% 32% / 40% 65% 35% 60%; border-block-start-color: transparent; }
+.menu-line[data-shape="sweep"] { border-width: 0 0 4px; border-radius: 0 0 50% 45%; block-size: 10rem; inline-size: clamp(18rem, 40vw, 42rem); }
+.menu-line[data-color="green"][data-shape="arc"] { top: 8%; left: -14rem; transform: rotate(26deg); }
+.menu-line[data-color="maroon"][data-shape="arc"] { top: 50%; right: -17rem; transform: rotate(-65deg); }
+.menu-line[data-color="gold"][data-shape="arc"] { bottom: -17rem; left: 28%; transform: rotate(15deg); }
+.menu-line[data-color="green"][data-shape="bend"] { top: 48%; right: -12rem; transform: rotate(-24deg); }
+.menu-line[data-color="maroon"][data-shape="bend"] { top: -8rem; left: 30%; transform: rotate(18deg); }
+.menu-line[data-color="gold"][data-shape="bend"] { bottom: 9%; left: -13rem; transform: rotate(145deg); }
+.menu-line[data-color="green"][data-shape="loop"] { bottom: -19rem; right: 5%; transform: rotate(36deg); }
+.menu-line[data-color="maroon"][data-shape="loop"] { bottom: 17%; left: -19rem; transform: rotate(-18deg); }
+.menu-line[data-color="gold"][data-shape="loop"] { top: -15rem; right: -8rem; transform: rotate(28deg); }
+/* Long, open curves travel through the canvas while shorter motifs frame it. */
+.menu-line[data-color="green"][data-shape="sweep"] { top: 22%; left: -8%; inline-size: 116%; block-size: clamp(10rem, 22vw, 24rem); transform: rotate(-16deg); }
+.menu-line[data-color="maroon"][data-shape="sweep"] { top: 56%; left: -8%; inline-size: 116%; block-size: clamp(8rem, 16vw, 18rem); transform: rotate(13deg); }
+.menu-line[data-color="gold"][data-shape="sweep"] { top: 38%; left: 8%; inline-size: 100%; block-size: clamp(10rem, 20vw, 22rem); transform: rotate(-32deg); }
+@media (max-width: 47.99rem) {
+  .menu-line { opacity: .11; }
+  .menu-line[data-color="gold"] { opacity: .2; }
+  .menu-line[data-shape="bend"], .menu-line[data-shape="sweep"] { display: none; }
+  .menu-line[data-color="green"][data-shape="sweep"] { display: block; top: 26%; left: -20%; inline-size: 140%; block-size: 9rem; transform: rotate(-22deg); }
+  .menu-line[data-color="gold"][data-shape="sweep"] { display: block; top: 65%; left: -20%; inline-size: 140%; block-size: 8rem; transform: rotate(24deg); }
+  .menu-line[data-color="green"][data-shape="arc"] { left: -11rem; top: 9%; }
+  .menu-line[data-color="gold"][data-shape="loop"] { right: -11rem; top: 30%; }
+  .menu-line[data-color="maroon"][data-shape="arc"] { right: -11rem; top: 67%; }
+  .menu-line[data-color="maroon"][data-shape="loop"] { left: -12rem; bottom: 10%; }
+}
+@media (forced-colors: active), print {
+  .menu-lines { display: none; }
+}
 .shell[data-size="narrow"] { --compose-max: var(--measure-narrow); }
 .shell[data-size="hero"] { --compose-max: var(--measure-hero); }
 .shell[data-size="text"] { --compose-max: var(--measure-text); }
