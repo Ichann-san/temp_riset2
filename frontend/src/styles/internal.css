@@ -1,0 +1,260 @@
+/* Internal role styles. Shared tokens, shell, composition variants and building blocks live in src/app/globals.css.
+   Everything here is prefixed "ws-" (workspace) and only used by components/roles + workspace.tsx.
+   Container steps (page container, not viewport): c1 >= 37.5rem, c2 >= 56.25rem, c3 >= 75rem.
+
+   Screen grammar (kit.tsx): title → optional upper band (.ws-band: summary areas side by side, filling the track) →
+   ONE work panel (.ws-panel: heading + head actions on one row, toolbar, table) → detail (DetailPane) beside the table
+   from c3 (globals.css: work + aside = minmax(0, 1fr) | 20rem), sheet below that.
+   Tables fill their panel from c1 (RecordTable width "fill"; "fit" hugs the columns). Long text columns are capped
+   (.ws-clamp). Below c1 the same <table> DOM is laid out as list cards (explicit ARIA roles keep the table semantics). */
+
+/* ---------- Panels, hints ---------- */
+.ws-panel { --panel-padding: var(--space-5); display: grid; gap: var(--space-4); min-inline-size: 0; padding: var(--panel-padding); border: 1px solid var(--line); border-radius: var(--radius-panel); background: var(--surface); }
+.ws-panel-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .5rem 1rem; }
+.ws-panel-title { display: grid; gap: .125rem; min-inline-size: 0; }
+.ws-panel-head h2, .ws-detail-head h2, .ws-detail > h2 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
+.ws-panel-desc { max-inline-size: 65ch; color: var(--muted); font-size: .875rem; }
+.ws-panel-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.ws-detail-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .375rem .75rem; }
+.ws-hint { color: var(--muted); font-size: .8125rem; }
+.ws-stack { display: grid; gap: 1rem; }
+.ws-message { padding: var(--space-3) var(--space-4); border-radius: var(--radius-control); background: var(--surface-soft); }
+.ws-clamp { display: block; max-inline-size: 48ch; white-space: normal; }
+.ws-stars { color: #8a7412; letter-spacing: .05em; white-space: nowrap; }
+.ws-stars-off { color: #c9d1c9; }
+.ws-link { color: var(--accent-dark); font-weight: 650; text-decoration: underline; text-underline-offset: .2em; text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+.ws-link:hover { text-decoration-color: currentColor; }
+.ws-cell-with-chip { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .25rem .5rem; }
+
+/* Deferred function (Tambah pasien): disabled button with its reason next to it. */
+.ws-unavailable { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .25rem .625rem; }
+.ws-unavailable small { color: var(--muted); font-size: .8125rem; }
+.ws-fieldset { display: grid; gap: 1rem; min-inline-size: 0; margin: 0; padding: 0; border: 0; }
+.ws-fieldset:disabled .field { cursor: not-allowed; }
+
+/* Status chips: tone from the status text (Status component sets data-status). Default = done/positive (green). */
+.status-chip[data-status^="Menunggu"], .status-chip[data-status="Tunggu terlama"] { background: var(--warning-bg); color: var(--warning-text); }
+.status-chip:is([data-status="Diperiksa"], [data-status="Bertugas"], [data-status="Tervalidasi"], [data-status="Ulasan"]) { background: #e9f3ef; color: #246044; }
+.status-chip:is([data-status="Libur"], [data-status="Aduan"]) { background: var(--error-bg); color: var(--danger); }
+.status-chip:is([data-status="Tidak bertugas"], [data-status="Belum tersedia"]) { background: #eef2ee; color: var(--muted); }
+
+/* ---------- Upper band: summary areas side by side, filling the track (like the worklist upper section) ---------- */
+.ws-band { display: grid; gap: var(--space-4); align-items: stretch; }
+.ws-band > :is(.summary-box, .alert) { align-content: start; gap: var(--space-3); padding: var(--space-5); }
+.ws-counts { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: .625rem 1.5rem; margin: 0; }
+.ws-counts div { display: grid; gap: .125rem; }
+.ws-counts dt { color: var(--muted); font-size: .8125rem; }
+.ws-counts dd { margin: 0; font-size: 1.125rem; font-weight: 700; }
+.ws-period { display: grid; gap: .75rem; }
+.ws-period .primary-button { inline-size: 100%; }
+
+/* ---------- Toolbar above a table: search form, status filter, selects ---------- */
+.ws-tools { display: flex; flex-wrap: wrap; align-items: end; gap: .75rem 1.25rem; }
+.ws-search { display: flex; align-items: end; gap: .5rem; flex: 1 1 18rem; max-inline-size: 26rem; margin: 0; }
+.ws-search .field-group { flex: 1 1 auto; min-inline-size: 0; }
+.ws-inline-field .field-group { grid-template-columns: auto minmax(9rem, 12rem); align-items: center; gap: .625rem; }
+
+/* Shared select-only combobox; both trigger and options use MCU styling. */
+.ws-select { position: relative; display: grid; gap: var(--space-1); flex: 0 1 17rem; min-inline-size: 0; inline-size: 17rem; max-inline-size: 100%; }
+.ws-select > label, .ws-search-field > label { color: var(--muted); font-size: var(--text-small); font-weight: 500; }
+.ws-select-trigger { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); min-block-size: 44px; inline-size: 100%; padding: 10px 12px; border: 1px solid var(--control-border); border-radius: var(--radius-control); background: var(--surface); color: var(--foreground); text-align: start; font-size: var(--text-table); line-height: 1.4; cursor: pointer; }
+.ws-select-trigger > span { display: flex; align-items: center; gap: var(--space-2); min-inline-size: 0; }
+.ws-select-trigger > svg { flex: 0 0 auto; }
+.ws-select-trigger:hover, .ws-select[data-open] .ws-select-trigger { border-color: var(--accent); }
+.ws-select[data-open] { z-index: 15; }
+.ws-select-count { flex: 0 0 auto; padding-inline: 6px; border-radius: 4px; background: var(--accent-soft); color: var(--accent-dark); font-size: .75rem; font-variant-numeric: tabular-nums; }
+.ws-select-options { position: absolute; z-index: 1; inset-inline: 0; top: calc(100% + 6px); display: grid; gap: 2px; max-block-size: min(18rem, 45dvh); overflow-y: auto; overscroll-behavior: contain; list-style: none; margin: 0; padding: var(--space-2); border: 1px solid var(--line); border-radius: var(--radius-control); background: var(--surface); box-shadow: var(--shadow-popover); }
+.ws-select[data-above] .ws-select-options { top: auto; bottom: calc(100% + 6px); }
+.ws-select-options li { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); min-block-size: 44px; padding: var(--space-2) var(--space-3); border-radius: var(--radius-control); font-size: var(--text-table); line-height: 1.4; cursor: pointer; }
+.ws-select-options li[data-active] { background: #f1f6f3; outline: 1px solid var(--line); outline-offset: -1px; }
+.ws-select-options li[aria-selected="true"] { color: var(--accent-dark); background: var(--accent-soft); font-weight: 600; }
+.ws-option-meta { display: flex; align-items: center; justify-content: end; gap: 8px; min-inline-size: 2.5rem; color: var(--muted); font-size: var(--text-small); }
+.ws-option-meta svg { color: var(--accent); }
+.ws-list-tools { display: grid; gap: var(--space-3); }
+.ws-filter-controls { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: end; }
+.ws-filter-controls > .ws-select { flex-basis: 14rem; }
+.ws-search-field { display: grid; gap: var(--space-1); flex: 1 1 16rem; min-inline-size: 0; }
+.ws-search-field .field { font-size: var(--text-table); }
+.ws-list-summary { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; gap: var(--space-2); min-block-size: 2rem; color: var(--muted); font-size: var(--text-small); }
+.ws-reset { border: 0; background: transparent; color: var(--accent-dark); min-block-size: 44px; padding: 4px 0 4px 12px; cursor: pointer; font-size: var(--text-small); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 600px) {
+  .ws-filter-controls { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .ws-select { inline-size: 100%; }
+  .ws-search-field .field { font-size: 1rem; }
+}
+
+/* ---------- Forms and cards ---------- */
+.ws-form { display: grid; gap: 1rem; align-content: start; }
+.ws-form h3 { font-size: 1rem; font-weight: 650; }
+.ws-actions { display: grid; gap: .5rem; }
+.ws-actions > :is(button, a) { inline-size: 100%; }
+.ws-actions[data-split] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ws-row-button { min-block-size: 44px; padding: .375rem .75rem; white-space: nowrap; background: transparent; }
+.ws-row-button[aria-current] { background: var(--accent-soft); border-color: var(--accent); }
+.ws-row-button:disabled { background: var(--disabled-bg); color: var(--disabled-text); }
+.ws-placeholder { display: grid; gap: var(--space-1); padding: var(--space-4); border: 1px solid var(--line); border-radius: var(--radius-control); background: var(--surface-soft); color: var(--muted); font-size: var(--text-table); }
+.ws-placeholder strong { color: var(--foreground); }
+
+/* ---------- Detail (block "aside"): one card, inner SummaryBoxes become sections ---------- */
+.ws-detail { display: grid; gap: var(--space-4); align-content: start; max-inline-size: var(--row-box); padding: var(--space-5); border: 1px solid var(--line); border-radius: var(--radius-panel); background: var(--surface); font-size: var(--text-table); scroll-margin-block-start: calc(var(--header-h) + 1rem); }
+.ws-detail .summary-box { padding: 0; border: 0; border-radius: 0; }
+.ws-detail .summary-box + .summary-box, .ws-detail > .summary-box:not(:first-child) { padding-block-start: .875rem; border-block-start: 1px solid var(--line); }
+.ws-detail .lines li { align-items: center; }
+.ws-detail h2[tabindex="-1"]:focus:not(:focus-visible) { outline: none; }
+.ws-detail-sheet { max-inline-size: none; padding: 0; border: 0; background: none; }
+
+/* ---------- Work-hero lead: unit name, number being served (or presence card), action ---------- */
+.ws-hero { display: grid; gap: .75rem; align-content: start; inline-size: 100%; max-inline-size: var(--queue-max); }
+.ws-hero-unit { font-weight: 650; text-align: center; }
+.ws-hero > .ws-hint { text-align: center; }
+
+/* ---------- Record table: list cards below c1 ---------- */
+.ws-table { min-inline-size: 0; }
+.ws-table :is(table, tbody, tr, td) { display: block; }
+.ws-table table { inline-size: 100%; min-inline-size: 0; border-collapse: collapse; }
+.ws-table thead { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.ws-table tbody { display: grid; gap: var(--space-3); }
+.ws-table tr { display: grid; gap: var(--space-2); padding: var(--space-4); border: 1px solid var(--line); border-radius: var(--radius-panel); background: var(--surface); }
+.ws-table tr[data-selected] { border-color: var(--accent); background: var(--surface-soft); }
+.ws-table td { display: grid; grid-template-columns: minmax(6.5rem, 38%) minmax(0, 1fr); gap: .75rem; align-items: baseline; padding: 0; font-size: var(--text-table); overflow-wrap: anywhere; }
+.ws-table td::before { content: attr(data-label); color: var(--muted); font-size: .8125rem; }
+.ws-table td:is([data-kind="title"], [data-kind="action"], [data-kind="empty"]) { display: block; }
+.ws-table td:is([data-kind="title"], [data-kind="action"], [data-kind="empty"])::before { content: none; }
+.ws-table td[data-kind="title"] { font-size: .9375rem; font-weight: 600; }
+.ws-table td[data-kind="action"] { margin-block-start: .25rem; }
+.ws-table td[data-kind="action"] button { inline-size: 100%; }
+.ws-table td[data-kind="empty"] { color: var(--muted); }
+.ws-table td > .status-chip { justify-self: start; white-space: normal; }
+/* Compact columns (Column.compact): two per row as label-over-value, so long cards stay short on phones. */
+.ws-table tr:has(> td[data-compact]) { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1rem; }
+.ws-table tr:has(> td[data-compact]) > td:not([data-compact]) { grid-column: 1 / -1; }
+.ws-table td[data-compact] { grid-template-columns: minmax(0, 1fr); gap: 0; }
+.ws-table td[data-compact]::before { font-size: .75rem; }
+
+@container page (min-width: 37.5rem) {
+  .ws-band { grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); }
+  .ws-period { display: flex; flex-wrap: wrap; align-items: end; gap: .75rem; }
+  .ws-period .field-group { flex: 1 1 9rem; }
+  .ws-period .primary-button { inline-size: auto; }
+  .ws-period .field-error { flex-basis: 100%; }
+  .ws-counts { display: flex; flex-wrap: wrap; gap: .5rem 2rem; }
+
+  /* Real table, filling its panel ("fit": bounded to the sum of its columns). */
+  .ws-table { inline-size: 100%; overflow-x: auto; border: 0; border-block-start: 1px solid var(--line); border-radius: 0; background: var(--surface); }
+  .ws-table[data-width="fit"] { inline-size: fit-content; max-inline-size: 100%; }
+  .ws-table table { display: table; inline-size: 100%; min-inline-size: 0; }
+  .ws-table[data-width="fit"] table { inline-size: max-content; }
+  .ws-table thead { position: static; display: table-header-group; inline-size: auto; block-size: auto; overflow: visible; clip-path: none; }
+  .ws-table tbody { display: table-row-group; }
+  .ws-table tr { display: table-row; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; }
+  .ws-table th { padding: .625rem .875rem; border-block-end: 1px solid var(--line); background: #f7f9f7; color: var(--muted); font-size: .8125rem; font-weight: 600; text-align: start; white-space: nowrap; }
+  .ws-table td { display: table-cell; padding: .375rem .75rem; border-block-start: 1px solid var(--line); vertical-align: middle; overflow-wrap: normal; }
+  .ws-table tbody tr:first-child td { border-block-start: 0; }
+  .ws-table td::before { content: none; }
+  .ws-table td:is([data-kind="title"], [data-kind="action"], [data-kind="empty"]) { display: table-cell; }
+  .ws-table td[data-kind="title"] { font-size: var(--text-table); white-space: normal; min-inline-size: 8rem; }
+  .ws-table td[data-kind="num"] { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .ws-table :is(th, td)[data-kind="action"] { inline-size: 1%; margin: 0; text-align: end; }
+  .ws-table td[data-kind="action"] button { inline-size: auto; }
+  .ws-table td[data-kind="empty"] { padding-block: 1.25rem; }
+  .ws-table tr[data-selected] td { background: var(--accent-soft); }
+  .ws-table td > .status-chip { max-inline-size: 15rem; white-space: normal; }
+}
+
+/* Detail beside the table (c2): it fills its 20–23rem column and, on a tall enough viewport, stays reachable. */
+@container page (min-width: 56.25rem) {
+  .compose[data-compose="work"] > .ws-detail { max-inline-size: none; }
+  .compose[data-compose="work-hero"] > .ws-hero { max-inline-size: none; }
+}
+@media (min-height: 45rem) {
+  @container page (min-width: 56.25rem) {
+    .compose[data-compose="work"] > .ws-detail { max-block-size: calc(100dvh - var(--header-h) - 2rem); overflow-y: auto; }
+  }
+}
+
+/* ---------- Capacity (backend component, unchanged): only its tables are bounded ---------- */
+.ws-capacity { display: grid; gap: 1rem; }
+.ws-capacity .table-scroll { inline-size: fit-content; max-inline-size: 100%; }
+.ws-capacity table { inline-size: max-content; min-inline-size: 0; }
+.ws-capacity td { padding: .625rem .875rem; border-block-end: 1px solid var(--line); }
+
+/* ---------- Worklist per unit (/staff/worklist, worklist + time log merged 17 Oktober 2026), prefix "wl-" ----------
+   Upper section (block "lead", .wl-upper): three areas, Status hari ini | Status unit | Rata-rata waktu per unit, each
+   three label/number rows so they read as one band. Stacked below c1; c1: Status hari ini spans the row and the two
+   per-unit tables sit side by side; c2: one row of three.
+   Lower section (block "main", .wl-main): ONE table. From c1 it fills the work track (10 columns, so it is close to
+   the track anyway; this keeps its edges aligned with the upper section and stable when the unit filter changes)
+   and scrolls inside a bounded box (RecordTable `bounded`, .ws-table[data-bounded]) with a sticky header and a sticky
+   first column (Nomor antrian), so the page itself stays about one viewport tall; .wl-main only sets the box height
+   (--table-max-h) to what is left under the upper section. Below c1 the table is the RecordTable card list with the
+   time columns paired (Column.compact). */
+.wl-main { --table-max-h: clamp(16rem, 100dvh - 31.5rem, 46rem); }
+.wl-upper { display: grid; gap: var(--space-4); }
+.wl-upper > .summary-box { align-content: start; gap: var(--space-3); padding: var(--space-5); }
+.wl-today { display: grid; margin: 0; font-size: .875rem; }
+.wl-today div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-block: .1875rem; border-block-start: 1px solid var(--line); }
+.wl-today div:first-child { border-block-start: 0; }
+.wl-today dt { color: var(--muted); }
+.wl-today dd { margin: 0; font-size: 1.125rem; font-weight: 700; line-height: 1.3; }
+.wl-visits { display: grid; gap: .125rem; padding-block-start: .375rem; border-block-start: 1px solid var(--line); }
+.wl-visits h3 { color: var(--muted); font-size: .75rem; font-weight: 600; }
+.wl-visits dl { display: flex; flex-wrap: wrap; gap: .125rem .75rem; margin: 0; font-size: .8125rem; }
+.wl-visits dl div { display: flex; align-items: baseline; gap: .375rem; }
+.wl-visits dd { margin: 0; font-weight: 700; }
+
+/* Per-unit mini tables: a real table at every width (3 rows); the row of the filtered unit is tinted.
+   Resets the global table/th rules (min-width 460px, grey header cells) for these small tables. */
+.wl-mini { inline-size: calc(100% + 1rem); min-inline-size: 0; margin-inline: -.5rem; border-collapse: collapse; font-size: .875rem; }
+.wl-mini :is(th, td) { padding: .25rem .5rem; border: 0; border-block-start: 1px solid var(--line); background: none; text-align: end; white-space: nowrap; }
+/* Header row always two lines tall, so the rows of both per-unit tables line up side by side. */
+.wl-mini thead th { block-size: 2.5rem; border: 0; color: var(--muted); font-size: .75rem; font-weight: 600; line-height: 1.25; vertical-align: bottom; white-space: normal; }
+.wl-mini :is(thead th:first-child, tbody th) { text-align: start; }
+.wl-mini tbody th { color: var(--foreground); font-size: .875rem; font-weight: 600; }
+.wl-mini td { font-size: 1rem; font-weight: 700; }
+.wl-mini tr[data-selected] > * { background: var(--accent-soft); }
+
+@media (max-width: 380px) {
+  .wl-mini { table-layout: fixed; }
+  .wl-mini :is(th, td) { padding-inline: .25rem; }
+  .wl-mini th { overflow-wrap: anywhere; }
+  .wl-mini :is(thead th:first-child, tbody th) { inline-size: 34%; white-space: normal; }
+}
+
+@container page (min-width: 37.5rem) {
+  .wl-upper { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wl-upper > :first-child { grid-column: 1 / -1; }
+
+  .wl-main .ws-panel { grid-template-columns: minmax(0, 1fr); }
+
+}
+@container page (min-width: 56.25rem) {
+  .wl-upper { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1fr); }
+  .wl-upper > :first-child { grid-column: auto; }
+}
+
+/* ---------- Bounded record table (RecordTable `bounded`): from c1 it fills the track and scrolls inside its box ---------- */
+@container page (min-width: 37.5rem) {
+  .ws-table[data-bounded] { inline-size: 100%; max-block-size: var(--table-max-h, clamp(16rem, 100dvh - 20rem, 46rem)); overflow: auto; scrollbar-width: thin; }
+  .ws-table[data-bounded] table { inline-size: 100%; }
+  .ws-table[data-bounded] :is(th, td) { padding-inline: .5rem; }
+  .ws-table[data-bounded] :is(th, td):first-child { padding-inline-start: .75rem; }
+  .ws-table[data-bounded] td { font-size: .875rem; white-space: nowrap; }
+  .ws-table[data-bounded] th { position: sticky; inset-block-start: 0; z-index: 1; border-block-end: 0; box-shadow: inset 0 -1px var(--line); line-height: 1.3; vertical-align: bottom; white-space: normal; }
+  .ws-table[data-bounded] :is(th, td):first-child { position: sticky; inset-inline-start: 0; z-index: 1; background: var(--surface); box-shadow: inset -1px 0 var(--line); }
+  .ws-table[data-bounded] th:first-child { z-index: 2; background: #f7f9f7; box-shadow: inset 0 -1px var(--line), inset -1px 0 var(--line); }
+}
+
+/* The list and detail align on wide screens; small screens use the existing dialog. */
+@media (min-width: 1280px) {
+  .compose[data-compose="work"] > .ws-detail { max-inline-size: none; }
+}
+.ws-table tbody tr:not([data-selected]):hover > td { background: #f5faf7; }
+@container page (min-width: 37.5rem) {
+  .ws-table tr[data-selected] td:first-child { box-shadow: inset 2px 0 0 var(--accent); }
+  .ws-table td[data-kind="empty"] { padding: var(--space-6) var(--space-4); color: var(--muted); font-size: var(--text-table); white-space: normal; }
+}
+@media (max-width: 600px) {
+  .ws-panel { --panel-padding: var(--space-4); }
+  .ws-detail { padding: var(--space-4); }
+  .ws-band > :is(.summary-box, .alert), .wl-upper > .summary-box { padding: var(--space-4); }
+}

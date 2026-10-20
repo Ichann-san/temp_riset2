@@ -1,0 +1,214 @@
+/* Patient portal styles (phase 2). Shared tokens, composition variants and building blocks live in src/app/globals.css.
+   Steps are container queries on the `page` container (c1 37.5rem, c2 56.25rem, c3 75rem). Reading sequence = DOM sequence; no reordering properties. */
+
+/* ---------- Shared bits ---------- */
+.edit-link { display: inline-flex; align-items: center; min-block-size: 44px; padding-inline: .5rem; margin-inline-end: -.5rem; color: var(--accent-dark); font-weight: 650; }
+.edit-link:hover { color: var(--accent); }
+.form-stack { display: grid; gap: var(--space-4); padding: var(--space-5); border: 1px solid var(--line); border-radius: var(--radius-panel); background: var(--surface); }
+.sent-panel h2 { font-size: 1.125rem; }
+.sent-panel h2:focus { outline: none; }
+.sent-panel h2:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* ---------- Patient header: back or ISLAH mark, breadcrumb, account (no drawer) ---------- */
+.crumbs { min-width: 0; }
+.crumbs ol { display: flex; align-items: center; gap: .375rem; margin: 0; padding: 0; list-style: none; font-size: .9375rem; }
+.crumbs li { display: flex; align-items: center; gap: .375rem; min-width: 0; white-space: nowrap; }
+.crumbs li + li::before { content: "\203A"; color: var(--muted); }
+.crumbs a { display: inline-flex; align-items: center; min-block-size: 44px; color: var(--muted); }
+.crumbs a:hover { color: var(--accent-dark); }
+.crumbs [aria-current] { overflow: hidden; font-weight: 650; text-overflow: ellipsis; }
+@media (max-width: 37.49rem) {
+  .crumbs li:not(:last-child) { display: none; }
+  .crumbs li:last-child::before { content: none; }
+}
+
+/* ---------- Beranda (home): account, registration box, bento, Denah ---------- */
+.home-account, .queue-box, .bento-card, .map-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-panel); }
+.home-account { display: grid; align-content: space-between; gap: var(--space-4); padding: var(--space-5); }
+.account-greeting { display: flex; align-items: start; gap: var(--space-3); }
+.account-greeting .account-hello { min-inline-size: 0; }
+.account-hello { display: grid; gap: .125rem; }
+.account-hello p { color: var(--muted); font-size: .875rem; }
+.home-account h1 { font-size: clamp(1.25rem, 1.1rem + .8cqi, 1.625rem); font-weight: 650; line-height: 1.25; letter-spacing: -.02em; }
+.account-facts { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin: 0; }
+.account-facts dt { color: var(--muted); font-size: .75rem; }
+.account-facts dd { margin: 0; font-size: .9375rem; font-weight: 600; }
+
+.queue-box { display: grid; align-content: start; padding: .875rem 0 .25rem; container: queue / inline-size; }
+.queue-box-head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: 0 1.125rem .625rem; }
+.queue-box-head h2 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
+.queue-box-head h2:focus { outline: none; }
+.queue-box-head h2:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+/* Fixed size whatever the number of registrations or opened rows (about two rows visible); extra content scrolls inside the
+   box, and scrolling past its end continues with the page (no overscroll containment). */
+.queue-scroll { block-size: 9.75rem; overflow-y: auto; border-block-start: 1px solid var(--line); scrollbar-gutter: stable; }
+.queue-scroll:focus-visible { outline-offset: -3px; }
+.queue-list { margin: 0; padding: 0; list-style: none; }
+.queue-list li + li { border-block-start: 1px solid var(--line); }
+.queue-row summary { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .75rem; min-block-size: 4.5rem; padding: .5rem 1.125rem; cursor: pointer; list-style: none; }
+.queue-row summary::-webkit-details-marker { display: none; }
+.queue-row summary:hover { background: #f7fbf9; }
+.queue-row[open] summary svg { transform: rotate(180deg); }
+/* Service date block (not a queue number: none exists before verified payment). */
+.queue-date { display: grid; justify-items: center; min-inline-size: 4.25rem; padding: var(--space-2); border-radius: var(--radius-control); background: var(--accent-soft); color: var(--accent-dark); text-align: center; }
+.queue-date small { font-size: .75rem; font-weight: 500; line-height: 1.3; }
+.queue-date strong { font-size: 1rem; font-weight: 700; line-height: 1.2; white-space: nowrap; }
+.queue-who { display: grid; gap: .25rem; min-width: 0; }
+.queue-who > span:first-child { overflow: hidden; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+.queue-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .5rem; }
+.queue-meta small { color: var(--muted); font-size: .8125rem; white-space: nowrap; }
+.queue-detail { display: grid; gap: .75rem; padding: 0 1.125rem 1rem; }
+.queue-detail .secondary-button { justify-self: start; }
+.queue-estimate { display: grid; gap: .125rem; }
+.queue-estimate strong { font-size: 1.25rem; }
+.queue-estimate small { color: var(--muted); font-size: .8125rem; }
+.queue-empty { display: grid; justify-items: start; align-content: center; gap: .5rem; block-size: 100%; padding: .875rem 1.125rem 1rem; }
+.queue-detail .text-button { justify-self: start; }
+.danger-text { color: var(--danger); }
+.queue-confirm { display: grid; gap: var(--space-3); padding: var(--space-3); border: 1px solid var(--error-line); border-radius: var(--radius-control); background: var(--error-bg); font-size: var(--text-table); }
+.queue-confirm-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.queue-confirm-actions > * { flex: 1 1 8rem; }
+.danger-button { display: inline-flex; gap: var(--space-2); align-items: center; justify-content: center; min-block-size: 44px; padding: 10px 16px; border: 1px solid transparent; border-radius: var(--radius-control); background: var(--danger); color: white; font-weight: 600; cursor: pointer; }
+.danger-button:hover:not(:disabled) { background: #6f1513; }
+.danger-button:active:not(:disabled) { background: #59110f; }
+.danger-button:disabled { background: var(--disabled-bg); color: var(--disabled-text); cursor: not-allowed; }
+.queue-empty p { color: var(--muted); }
+
+.home-bento { container: bento / inline-size; }
+.bento { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); margin: 0; padding: 0; list-style: none; }
+.bento > li { display: grid; }
+.bento > [data-bento="registration"], .bento > [data-bento="feedback"] { grid-column: span 2; }
+.bento-card { display: grid; grid-template-rows: auto auto 1fr auto; gap: var(--space-2); min-block-size: 9rem; padding: var(--space-5); color: var(--foreground); }
+.bento-card:hover { border-color: var(--accent); }
+.bento-icon { display: grid; place-items: center; inline-size: 2.5rem; block-size: 2.5rem; margin-block-end: var(--space-1); border-radius: var(--radius-control); background: var(--accent-soft); color: var(--accent-dark); }
+.bento-card strong { font-size: 1rem; font-weight: 650; line-height: 1.3; }
+.bento-text { color: var(--muted); font-size: .8125rem; }
+.bento-recent { display: none; }
+.bento-recent > span { display: flex; gap: .5rem; min-width: 0; padding-block: .375rem; border-block-start: 1px dashed var(--line); font-size: .8125rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.bento-recent b { color: var(--accent-dark); font-weight: 700; }
+.bento-recent [data-cancelled] { color: var(--muted); }
+.bento-recent [data-cancelled] b { color: var(--muted); text-decoration: line-through; }
+.bento-foot { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-block-start: .25rem; padding-block-start: .625rem; border-block-start: 1px solid var(--line); color: var(--accent-dark); font-size: .875rem; font-weight: 600; }
+/* Registrasi: the largest and only filled card (primary task). */
+[data-bento="registration"] .bento-card { min-block-size: 10.5rem; background: var(--accent); border-color: var(--accent); color: white; }
+[data-bento="registration"] .bento-card:hover { background: var(--accent-dark); }
+[data-bento="registration"] .bento-card strong { font-size: 1.25rem; }
+[data-bento="registration"] .bento-icon { background: rgb(255 255 255 / .16); color: white; }
+[data-bento="registration"] .bento-text { color: rgb(255 255 255 / .9); }
+[data-bento="registration"] .bento-foot { border-color: rgb(255 255 255 / .28); color: white; }
+@container bento (min-width: 34rem) {
+  .bento { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .bento > [data-bento="history"] { grid-row: span 2; }
+  .bento-recent { display: grid; align-content: end; }
+  .bento > [data-bento="feedback"] { grid-column: auto; }
+  [data-bento="registration"] .bento-card { min-block-size: 11.5rem; }
+}
+
+.map-card { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: var(--space-2) var(--space-3); padding: var(--space-5); color: var(--foreground); }
+.map-card:hover { border-color: var(--accent); }
+.map-preview { display: grid; place-items: center; inline-size: 3rem; block-size: 3rem; border-radius: var(--radius-control); background: var(--accent-soft); color: var(--accent-dark); }
+.map-text { display: grid; }
+.map-text strong { font-weight: 650; }
+.map-text span { color: var(--muted); font-size: .8125rem; }
+.map-card .bento-foot { grid-column: 1 / -1; }
+.home-map { display: grid; }
+@container page (min-width: 56.25rem) {
+  .home-map { align-self: stretch; }
+  .map-card { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(7rem, 1fr) auto auto; align-items: stretch; block-size: 100%; }
+  .map-preview { inline-size: 100%; block-size: 100%; background: var(--surface-soft); border: 1px solid var(--line); }
+  .map-text { gap: .125rem; }
+}
+
+/* ---------- Registration status vocabulary and shared notes ---------- */
+.status-chip[data-state="awaiting_payment"] { background: #fffbea; color: #514300; }
+.status-chip[data-state="waiting"] { background: #eef2ee; color: #3d4a42; }
+.status-chip[data-state="cancelled"] { background: #eceeed; color: var(--muted); }
+.app-note { padding: var(--space-3); border-radius: var(--radius-control); background: var(--surface-soft); border: 1px solid var(--line); color: var(--foreground); font-size: var(--text-table); }
+.form-note { padding: var(--space-3); border-radius: var(--radius-control); background: var(--accent-soft); color: var(--accent-dark); font-size: var(--text-table); }
+
+/* ---------- Registration: service date (assigned by the system) and submitting account ---------- */
+.reg-date { display: grid; gap: var(--space-1); padding: var(--space-3); border: 1px solid var(--line); border-radius: var(--radius-control); background: var(--surface); }
+.reg-date span { color: var(--muted); font-size: .75rem; font-weight: 600; }
+.reg-date strong { font-size: .9375rem; font-weight: 650; }
+.reg-date small { color: var(--muted); font-size: .75rem; }
+.reg-by { color: var(--muted); font-size: .8125rem; overflow-wrap: anywhere; }
+.reg-terms { display: grid; gap: .75rem; }
+.review-stack { display: grid; gap: 1rem; align-content: start; }
+
+/* ---------- Registration: step rail (form-rail) ---------- */
+.reg-rail { display: grid; gap: .75rem; align-content: start; }
+.reg-step-count { color: var(--muted); font-size: .8125rem; font-weight: 650; }
+.reg-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .375rem; margin: 0; padding: 0; list-style: none; counter-reset: reg-step; }
+.reg-steps li { position: relative; counter-increment: reg-step; block-size: 4px; border-radius: 4px; background: var(--line); }
+.reg-steps li[aria-current] { background: var(--accent); }
+.reg-step-name { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@container page (min-width: 56.25rem) {
+  .reg-steps { grid-template-columns: minmax(0, 1fr); gap: .25rem; }
+  .reg-steps li { display: flex; align-items: center; gap: .625rem; block-size: auto; min-block-size: 2.75rem; padding: .25rem .5rem; border-radius: 8px; background: none; color: var(--muted); }
+  .reg-steps li::before { content: counter(reg-step); display: grid; place-items: center; flex: none; inline-size: 1.75rem; block-size: 1.75rem; border: 1px solid #b7c9be; border-radius: 50%; font-size: .8125rem; font-weight: 650; }
+  .reg-steps li[aria-current] { background: var(--accent-soft); color: var(--accent-dark); font-weight: 650; }
+  .reg-steps li[aria-current]::before { background: var(--accent); border-color: var(--accent); color: white; }
+  .reg-step-name { position: static; inline-size: auto; block-size: auto; overflow: visible; clip-path: none; white-space: normal; }
+}
+
+/* ---------- Registration: terms (center, text measure) ---------- */
+.terms-box { display: grid; align-content: start; gap: var(--space-3); min-block-size: 16rem; max-block-size: max(16rem, calc(100dvh - 22rem)); overflow-y: auto; padding: var(--space-5); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-panel); }
+.terms-box h2 { margin-block-start: .375rem; font-size: 1rem; font-weight: 650; }
+.terms-box p:not(.mock-warning) { color: var(--muted); }
+.reg-agree { align-items: flex-start; min-block-size: 44px; padding-block: .625rem; font-weight: 500; cursor: pointer; }
+
+/* ---------- Registration: services (list-summary) ---------- */
+.package-card { padding: var(--space-1) var(--space-4); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-panel); }
+.package-card:has(> .choice-head input:checked) { border-color: var(--accent); background: var(--surface-soft); }
+.package-card:hover, .service-rows:has(.choice-head:not([data-included]):hover) { border-color: var(--accent); }
+.package-card .choice-head, .service-rows .choice-head { cursor: pointer; }
+.choice-head strong { font-weight: 650; }
+.package-items { padding: 0 0 .5rem 1.875rem; }
+.package-items summary { display: inline-flex; align-items: center; gap: .25rem; min-block-size: 44px; color: var(--accent-dark); font-size: .8125rem; font-weight: 650; cursor: pointer; list-style: none; }
+.package-items summary::-webkit-details-marker { display: none; }
+.package-items[open] summary svg { transform: rotate(180deg); }
+.package-items .lines { padding-block-end: .25rem; }
+.service-rows { padding-inline: var(--space-4); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-panel); }
+.service-rows .choice-head + .choice-head { border-block-start: 1px solid var(--line); }
+.service-rows [data-included] { color: var(--muted); cursor: default; }
+.reg-summary { display: grid; gap: .75rem; align-content: start; }
+.reg-summary .total strong { font-size: 1.25rem; }
+.reg-summary .primary-button { inline-size: 100%; }
+@container page (min-width: 56.25rem) {
+  .reg-summary { padding: var(--space-5); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-panel); }
+  .reg-summary .total { padding-block-start: 0; border-block-start: 0; }
+}
+
+/* ---------- Pendaftaran tercatat (center hero, no header): card centred vertically like the wireframe ---------- */
+.done-main { display: grid; align-content: center; justify-items: center; gap: 1rem; min-block-size: calc(100dvh - 12rem); text-align: center; }
+.done-card { display: grid; gap: var(--space-3); justify-items: start; inline-size: 100%; padding: var(--space-5); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-panel); text-align: start; }
+.done-card .summary { inline-size: 100%; }
+
+/* ---------- Denah ---------- */
+.map-main { display: grid; gap: .5rem; justify-items: center; text-align: center; }
+
+/* ---------- Aduan dan ulasan ---------- */
+.feedback-message { min-block-size: 9.5rem; }
+@container page (min-width: 37.5rem) { .feedback-message { min-block-size: 12rem; } }
+
+/* ---------- Riwayat (rows): stacked cards; from c2 one aligned row per card via subgrid ---------- */
+.history-list { display: grid; gap: .875rem; margin: 0; padding: 0; list-style: none; }
+.list-card[data-tone="muted"] { background: #f8faf9; }
+.list-card[data-tone="muted"] .status-chip { background: #eceeed; color: var(--muted); }
+.history-empty { display: grid; justify-items: center; gap: .5rem; }
+@media (max-width: 600px) {
+  .form-stack, .home-account, .bento-card, .map-card, .terms-box, .done-card { padding: var(--space-4); }
+  .account-greeting { flex-wrap: wrap; }
+}
+@supports (grid-template-columns: subgrid) {
+  @container page (min-width: 56.25rem) {
+    .history-list { grid-template-columns: [date] minmax(8rem, auto) [status] auto [patient] minmax(6rem, auto) [code] auto [sent] minmax(7rem, auto) [services] minmax(6rem, 1fr); column-gap: 1.25rem; row-gap: .75rem; }
+    .history-list > li, .history-list .list-card { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; column-gap: normal; align-items: center; }
+    .history-list .list-card-head { display: contents; }
+    .history-list .status-chip { justify-self: start; }
+    .history-list .summary { grid-column: patient / -1; grid-template-columns: subgrid; column-gap: normal; }
+    .history-list .summary-row { display: grid; align-content: start; gap: .125rem; }
+    .history-list .summary dt { font-size: .75rem; }
+    .history-list .list-card h2 { font-size: .9375rem; }
+  }
+}
